@@ -56,4 +56,4 @@ After downloaded datasets above, you have to use the correspoding processing cod
 | VinDr-Mammo | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/VinDr-Mammo.ipynb |
 
 ## Prepare VQA datasets
-Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry/MammoVQA), and put the dataset's json files under /Downstream/VQA/.
+Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry/MammoVQA), and put the dataset's json files under /downstream/VQA/.
