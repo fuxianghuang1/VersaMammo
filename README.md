@@ -29,20 +29,20 @@ After downloaded datasets above, you have to use the correspoding processing cod
 
 | Dataset Name | Process Dataset Code |
 |--------------|----------------------|
-| BMCD | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/BMCD.ipynb |
-| CBIS-DDSM | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/CBIS-DDSM.ipynb |
-| CDD-CESM | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/CDD-CESM.ipynb |
-| CMMD | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/CMMD.ipynb |
-| CSAW-M | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/CSAW-M.ipynb |
-| DBT | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/DBT.ipynb |
-| DMID | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/DMID.ipynb |
-| INbreast | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/INbreast.ipynb |
-| KAU-BCMD | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/KAU-BCMD.ipynb |
-| LAMIS | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/LAMIS.ipynb |
-| MIAS | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/MIAS.ipynb |
-| MM | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/MM.ipynb |
-| NLBS | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/NLBS.ipynb |
-| VinDr-Mammo | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/VinDr-Mammo.ipynb |
+| BMCD | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/BMCD.ipynb |
+| CBIS-DDSM | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/CBIS-DDSM.ipynb |
+| CDD-CESM | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/CDD-CESM.ipynb |
+| CMMD | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/CMMD.ipynb |
+| CSAW-M | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/CSAW-M.ipynb |
+| DBT | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/DBT.ipynb |
+| DMID | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/DMID.ipynb |
+| INbreast | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/INbreast.ipynb |
+| KAU-BCMD | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/KAU-BCMD.ipynb |
+| LAMIS | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/LAMIS.ipynb |
+| MIAS | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/MIAS.ipynb |
+| MM | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/MM.ipynb |
+| NLBS | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/NLBS.ipynb |
+| VinDr-Mammo | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/VinDr-Mammo.ipynb |
 
 ## Prepare segmentation\detection datasets
 After downloaded datasets above, you have to use the correspoding processing code for it. Remember to change the dataset link in the code!!!
@@ -51,9 +51,9 @@ After downloaded datasets above, you have to use the correspoding processing cod
 
 | Dataset Name | Process Dataset Code |
 |--------------|----------------------|
-| CBIS-DDSM | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/CBIS-DDSM.ipynb |
-| INbreast | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/INbreast.ipynb |
-| VinDr-Mammo | https://github.com/fuxianghuang1/VersaMammo/datapre/preprocess/VinDr-Mammo.ipynb |
+| CBIS-DDSM | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/CBIS-DDSM.ipynb |
+| INbreast | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/INbreast.ipynb |
+| VinDr-Mammo | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/VinDr-Mammo.ipynb |
 
 ## Prepare VQA datasets
 Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry/MammoVQA), and put the dataset's json files under /downstream/VQA/.
