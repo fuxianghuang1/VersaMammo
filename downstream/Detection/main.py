@@ -474,11 +474,11 @@ if __name__ == "__main__":
 
     
     hypar["input_size"] = [518, 518] 
-    input_path = f'{os.path.dirname(current_dir)}/segdetdata/{hypar["dataset"]}/Train'  # 替换为你的实际路径
+    input_path = f'../../datapre/segdetdata/segdetdata/{hypar["dataset"]}/Train'  # 替换为你的实际路径
     hypar['train_datapath'] = input_path+'_cache_'+str(hypar["input_size"][0])
     if not os.path.exists(hypar['train_datapath']):
         preprocess(input_path,hypar['train_datapath'],hypar["input_size"])
-    input_path = f'{os.path.dirname(current_dir)}/segdetdata/{hypar["dataset"]}/Eval'  # 替换为你的实际路径
+    input_path = f'../../datapre/segdetdata/segdetdata/{hypar["dataset"]}/Eval'  # 替换为你的实际路径
     hypar['val_datapath'] = input_path+'_cache_'+str(hypar["input_size"][0])
     if not os.path.exists(hypar['val_datapath']):
         preprocess(input_path,hypar['val_datapath'],hypar["input_size"])
