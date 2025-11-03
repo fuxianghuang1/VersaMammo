@@ -447,7 +447,7 @@ if __name__ == "__main__":
     # # # # #vitb-lvmmed
     if hypar["mode"] == "train":
         hypar["valid_out_dir"] = "" ## for "train" model leave it as "", for "valid"("inference") mode: set it according to your local directory
-        hypar["model_path"] =f"{os.path.dirname(current_dir)}/Detection/saved_model_ft/{hypar['dataset']}/LVM-Med (Vitb)" ## model weights saving (or restoring) path
+        hypar["model_path"] =f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/LVM-Med (Vitb)" ## model weights saving (or restoring) path
         hypar["restore_model"] = "" ## name of the segmentation model weights .pth for resume training process from last stop or for the inferencing
         hypar["start_ite"] = 0 ## start iteration for the training, can be changed to match the restored training process
         hypar["plot_output"]=False
@@ -461,7 +461,7 @@ if __name__ == "__main__":
     # # # #vitb-medsam
     if hypar["mode"] == "train":
         hypar["valid_out_dir"] = "" ## for "train" model leave it as "", for "valid"("inference") mode: set it according to your local directory
-        hypar["model_path"] =f"{os.path.dirname(current_dir)}/Detection/saved_model_ft/{hypar['dataset']}/MedSAM (Vitb)" ## model weights saving (or restoring) path
+        hypar["model_path"] =f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/MedSAM (Vitb)" ## model weights saving (or restoring) path
         hypar["restore_model"] = "" ## name of the segmentation model weights .pth for resume training process from last stop or for the inferencing
         hypar["start_ite"] = 0 ## start iteration for the training, can be changed to match the restored training process
         hypar["plot_output"]=False
