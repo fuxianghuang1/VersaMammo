@@ -13,6 +13,7 @@ from torchvision.transforms.functional import normalize
 import math
 import cv2
 from time import time
+from torchvision import transforms, utils
 
 class myRandomHFlip(object):
     def __init__(self,prob=0.5):
