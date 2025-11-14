@@ -8,7 +8,7 @@ Datasets downloading URL:
 |-----|---------------|--------|
 | BMCD | https://zenodo.org/records/5036062 | Open Access |
 | CBIS-DDSM | https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset | Open Access |
-| CDD-CESM | https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=109379611#109379611bcab02c187174a288dbcbf95d26179e8 | Open Access |
+| CDD-CESM | https://www.kaggle.com/datasets/krinalkasodiya/new-cdd-cesm-classification-data | Open Access |
 | DMID | https://figshare.com/articles/dataset/_b_Digital_mammography_Dataset_for_Breast_Cancer_Diagnosis_Research_DMID_b_DMID_rar/24522883 | Open Access |
 | INbreast | https://www.kaggle.com/datasets/tommyngx/inbreast2012 | Open Access |
 | MIAS | https://www.kaggle.com/datasets/kmader/mias-mammography | Open Access |
