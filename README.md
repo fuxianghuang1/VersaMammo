@@ -17,7 +17,7 @@ Datasets downloading URL:
 | VinDr-Mammo | https://www.physionet.org/content/vindr-mammo/1.0.0/ | Credentialed Access |
 | RSNA | https://www.kaggle.com/competitions/rsna-breast-cancer-detection/data | Open Access |
 | EMBED | https://registry.opendata.aws/emory-breast-imaging-dataset-embed/ | Credentialed Access |
-| DBT-Test | http://www.cancerimagingarchive.net/ | Open Access |
+| DBT-Test | https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/ | Open Access |
 | LAMIS | https://github.com/LAMISDMDB/LAMISDMDB_Sample | Credentialed Access |
 | MM | https://data.mendeley.com/datasets/fvjhtskg93/1 | Open Access |
 | NLBS | https://www.frdr-dfdr.ca/repo/dataset/cb5ddb98-ccdf-455c-886c-c9750a8c34c2 | Open Access |
