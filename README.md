@@ -60,6 +60,16 @@ Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry
 
 # Downstream
 
+## Clone repository
+```shell
+git clone https://github.com/PiggyJerry/MammoVQA.git
+
+conda create -n downstream python==3.9
+conda activate downstream
+
+python -m pip install -r requirements.txt
+```
+
 ## Prepare pre-trained weights
 Please download the [pre-trained weights](https://drive.google.com/file/d/1kEhA5ViCCwfnYtPbOn4rkWlikK1C4emb/view?usp=sharing) of SOTA models, and unzip it under /downstream/.
 
