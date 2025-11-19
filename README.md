@@ -63,15 +63,26 @@ Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry
 ## Clone repository
 ```shell
 git clone https://github.com/fuxianghuang1/VersaMammo.git
+cd downstream
 
 conda create -n downstream python==3.9
 conda activate downstream
-
+# for pip
 python -m pip install -r requirements.txt
+
+# for conda
+conda env update -f environment.yml
 ```
 
 ## Prepare pre-trained weights
 Please download the [pre-trained weights](https://drive.google.com/file/d/1kEhA5ViCCwfnYtPbOn4rkWlikK1C4emb/view?usp=sharing) of SOTA models, and unzip it under /downstream/.
+
+## Quick demo
+We have also included a quick demo to support training, testing, and visualization.
+
+# Classification
+1. Download the preprocessed demo data (Thanks for [INbreast dataset](https://www.sciencedirect.com/science/article/abs/pii/S107663321100451X))
+2. 
 
 ## Training
 For all the downstream tasks, you can use the following command to train the models (please modify the downstream_task to the corresponding task):
@@ -84,4 +95,5 @@ For all the downstream tasks, you can use the following command to test the mode
 ```shell
 bash /downstream/downstream_task/eval.sh
 ```
+
 
