@@ -62,7 +62,7 @@ Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry
 
 ## Clone repository
 ```shell
-git clone https://github.com/PiggyJerry/MammoVQA.git
+git clone https://github.com/fuxianghuang1/VersaMammo.git
 
 conda create -n downstream python==3.9
 conda activate downstream
