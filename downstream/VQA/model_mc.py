@@ -7,7 +7,7 @@ import os
 from functools import partial
 from Mammo_clip.mammo_clip import Mammo_clip
 import torchvision
-from Ours.models.image_encoder import load_image_encoder
+from VersaMammo.models.image_encoder import load_image_encoder
 from efficientnet_custom import EfficientNet
 os.environ['CUDA_VISIBLE_DEVICES'] = '7'
 loss_fct = nn.BCELoss()
