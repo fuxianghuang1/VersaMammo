@@ -1,14 +1,23 @@
-- [Data preprocessing](#data-preprocessing)
-  - [Download datasets](#download-datasets)
+
+## Contents
+
+- [Prerequisites](#prerequisites)
+  - [Pretraining prerequisites](#pretraining-prerequisites)
+  - [Downstream task prerequisites](#downstream-task-prerequisites)
+
+- [Data Preparation](#data-preparation)
+  - [Download dataset link](#download-dataset-link)
+  - [Prepare detection datasets](#prepare-detection-datasets)  
+  - [Prepare segmentation datasets](#prepare-segmentation-datasets)
+  - [Prepare retrieval datasets](#prepare-retrieval-datasets)
   - [Prepare classification datasets](#prepare-classification-datasets)
-  - [Prepare segmentation\detection datasets](#prepare-segmentation\detection-datasets)
   - [Prepare VQA datasets](prepare-vqa-datasets)
 
-- [Pretraining](#pretraining)
+- [Run](#run)
+ - [Pretraining](#pretraining)
+ - [Downstream task](#downstream-task)
 
-- [Downstream task](#downstream-task)
-
-
+- [Acknowledgements](#acknowledgements)
 # Data preprocessing
 
 ## Download datasets
