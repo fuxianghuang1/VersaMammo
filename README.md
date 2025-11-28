@@ -1,3 +1,14 @@
+- [Data preprocessing](#data-preprocessing)
+  - [Download datasets](#download-datasets)
+  - [Prepare classification datasets](#prepare-classification-datasets)
+  - [Prepare segmentation\detection datasets](#prepare-segmentation\detection-datasets)
+  - [Prepare VQA datasets](prepare-vqa-datasets)
+
+- [Pretraining](#pretraining)
+
+- [Downstream task](#downstream-task)
+
+
 # Data preprocessing
 
 ## Download datasets
@@ -58,7 +69,9 @@ After downloaded datasets above, you have to use the correspoding processing cod
 ## Prepare VQA datasets
 Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry/MammoVQA), and put the dataset's json files under /downstream/VQA/.
 
-# Downstream
+# Pretraining 
+
+# Downstream task
 
 ## Clone repository
 ```shell
