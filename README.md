@@ -14,10 +14,12 @@
   - [Prepare VQA datasets](prepare-vqa-datasets)
 
 - [Run](#run)
- - [Pretraining](#pretraining)
- - [Downstream task](#downstream-task)
+  - [Pretraining](#pretraining)
+  - [Downstream task](#downstream-task)
 
 - [Acknowledgements](#acknowledgements)
+
+
 # Data preprocessing
 
 ## Download datasets
