@@ -122,7 +122,7 @@ Please follow the steps:
    cd Quick_demo
    ```
 
-### Classification
+#### Classification
 1. Train the model:
    ```shell
    python Classification/main.py
@@ -132,7 +132,7 @@ Please follow the steps:
    python Classification/eval.py
    ```
 
-### Segmentation
+#### Segmentation
 1. Train the model:
    ```shell
    python Segment/main.py
@@ -142,7 +142,7 @@ Please follow the steps:
    python Segment/eval.py
    ```
 
-### Detection
+#### Detection
 1. Train the model:
    ```shell
    python Detection/main.py
@@ -152,7 +152,7 @@ Please follow the steps:
    python Detection/eval.py
    ```
 
-### VQA
+#### VQA
 1. Evaluate the model:
    ```shell
    python VQA/eval.py
