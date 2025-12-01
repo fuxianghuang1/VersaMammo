@@ -3,15 +3,14 @@
 
 - [Prerequisites](#prerequisites)
   - [Pretraining prerequisites](#pretraining-prerequisites)
-  - [Downstream task prerequisites](#Downstream-task-prerequisites)
+  - [Downstream task prerequisites](#downstream-task-prerequisites)
 
 - [Data Preparation](#data-preparation)
   - [Download dataset link](#download-dataset-link)
-  - [Prepare detection datasets](#prepare-detection-datasets)  
-  - [Prepare segmentation datasets](#prepare-segmentation-datasets)
+  - [Prepare segmentation&detection datasets](#prepare-segmentation&detection-datasets)  
   - [Prepare retrieval datasets](#prepare-retrieval-datasets)
   - [Prepare classification datasets](#prepare-classification-datasets)
-  - [Prepare VQA datasets](prepare-vqa-datasets)
+  - [Prepare VQA datasets](#prepare-vqa-datasets)
 
 - [Run](#run)
   - [Pretraining](#pretraining)
@@ -19,11 +18,26 @@
 
 - [Acknowledgements](#acknowledgements)
 
+# Prerequisites
+## Pretraining prerequisites
 
-# Data preprocessing
+## Downstream task prerequisites
+```shell
+git clone https://github.com/fuxianghuang1/VersaMammo.git
+cd VersaMammo/downstream
 
-## Download datasets
-### Datasets-Links:
+conda create -n downstream python==3.9
+conda activate downstream
+# for pip
+python -m pip install -r requirements.txt
+
+# for conda
+conda env update -f environment.yml
+```
+
+# Data Preparation
+
+## Download dataset link
 Datasets downloading URL:
     
 | Dataset Name | Link | Access |
@@ -44,9 +58,20 @@ Datasets downloading URL:
 | MM | https://data.mendeley.com/datasets/fvjhtskg93/1 | Open Access |
 | NLBS | https://www.frdr-dfdr.ca/repo/dataset/cb5ddb98-ccdf-455c-886c-c9750a8c34c2 | Open Access |
 
-## Prepare classification datasets
 After downloaded datasets above, you have to use the correspoding processing code for it. Remember to change the dataset link in the code!!!
 
+## Prepare segmentation&detection datasets
+### Processing Dataset Codes and Files Linking:
+
+| Dataset Name | Process Dataset Code |
+|--------------|----------------------|
+| CBIS-DDSM | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/CBIS-DDSM.ipynb |
+| INbreast | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/INbreast.ipynb |
+| VinDr-Mammo | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/VinDr-Mammo.ipynb |
+
+## Prepare retrieval datasets
+
+## Prepare classification datasets
 ### Processing Dataset Codes and Files Linking:
 
 | Dataset Name | Process Dataset Code |
@@ -66,37 +91,14 @@ After downloaded datasets above, you have to use the correspoding processing cod
 | NLBS | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/NLBS.ipynb |
 | VinDr-Mammo | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/VinDr-Mammo.ipynb |
 
-## Prepare segmentation\detection datasets
-After downloaded datasets above, you have to use the correspoding processing code for it. Remember to change the dataset link in the code!!!
-
-### Processing Dataset Codes and Files Linking:
-
-| Dataset Name | Process Dataset Code |
-|--------------|----------------------|
-| CBIS-DDSM | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/CBIS-DDSM.ipynb |
-| INbreast | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/INbreast.ipynb |
-| VinDr-Mammo | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/VinDr-Mammo.ipynb |
 
 ## Prepare VQA datasets
 Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry/MammoVQA), and put the dataset's json files under /downstream/VQA/.
 
-# Pretraining 
+# Run
+## Pretraining 
 
-# Downstream task
-
-## Downstream task prerequisites
-```shell
-git clone https://github.com/fuxianghuang1/VersaMammo.git
-cd VersaMammo/downstream
-
-conda create -n downstream python==3.9
-conda activate downstream
-# for pip
-python -m pip install -r requirements.txt
-
-# for conda
-conda env update -f environment.yml
-```
+## Downstream task
 
 ## Prepare pre-trained weights
 Please download the [pre-trained weights](https://drive.google.com/file/d/1kEhA5ViCCwfnYtPbOn4rkWlikK1C4emb/view?usp=sharing) of SOTA models, and unzip it under /downstream/.
