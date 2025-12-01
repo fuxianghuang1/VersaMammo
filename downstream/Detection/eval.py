@@ -285,10 +285,10 @@ if __name__ == "__main__":
     
     # # # # # #VersaMammo
     hypar["plot_output"]=False
-    hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/VersaMammo"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
-    hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/VersaMammo"
-    hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/VersaMammo.pth"
-    hypar["model"]=get_model(backbone_name="VersaMammo", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/VersaMammo/ENb5/ENB5_SL.pth',pretrained=True)
+    hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/VersaMammo (Enb5)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
+    hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/VersaMammo (Enb5)"
+    hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/VersaMammo (Enb5).pth"
+    hypar["model"]=get_model(backbone_name="VersaMammo", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/VersaMammo (Enb5).pth',pretrained=True)
     main(hypar=hypar)
     
     # # # # #lvmmed-resnet50
@@ -296,23 +296,23 @@ if __name__ == "__main__":
     hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/LVM-Med (R50)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
     hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/LVM-Med (R50)"
     hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/LVM-Med (R50).pth"
-    hypar["model"]=get_model(backbone_name="resnet50", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/lvmmed/lvmmed_resnet.torch',pretrained=True)
+    hypar["model"]=get_model(backbone_name="resnet50", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/LVM-Med (R50).torch',pretrained=True)
     main(hypar=hypar)
     
     # # # #vitb-lvmmed
     hypar["plot_output"]=False
-    hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/LVM-Med (Vitb)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
-    hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/LVM-Med (Vitb)"
-    hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/LVM-Med (Vitb).pth"
-    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/lvmmed/lvmmed_vit.pth',pretrained=True)
+    hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/LVM-Med (ViT-B)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
+    hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/LVM-Med (ViT-B)"
+    hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/LVM-Med (ViT-B).pth"
+    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/LVM-Med (ViT-B).pth',pretrained=True)
     main(hypar=hypar)
     
     # # # # #vitb-medsam
     hypar["plot_output"]=False
-    hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/MedSAM (Vitb)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
-    hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/MedSAM (Vitb)"
-    hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/MedSAM (Vitb).pth"
-    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/medsam_vit_b.pth',pretrained=True)
+    hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/MedSAM (ViT-B)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
+    hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/MedSAM (ViT-B)"
+    hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/MedSAM (ViT-B).pth"
+    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/MedSAM (ViT-B).pth',pretrained=True)
     main(hypar=hypar)
 
     
@@ -324,8 +324,8 @@ if __name__ == "__main__":
     
     # # #MAMA
     hypar["plot_output"]=False
-    hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/MAMA (Vitb)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
-    hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/MAMA (Vitb)"
-    hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/MAMA (Vitb).pth"
-    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mama_embed_pretrained_40k_steps_last.ckpt',pretrained=False,ours=None)
+    hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/MAMA (ViT-B)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
+    hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/MAMA (ViT-B)"
+    hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/MAMA (ViT-B).pth"
+    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/MAMA (ViT-B).ckpt',pretrained=False,ours=None)
     main(hypar=hypar)
