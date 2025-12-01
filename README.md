@@ -3,7 +3,7 @@
 
 - [Prerequisites](#prerequisites)
   - [Pretraining prerequisites](#pretraining-prerequisites)
-  - [Downstream task prerequisites](downstream-task-prerequisites)
+  - [Downstream task prerequisites](#Downstream-task-prerequisites)
 
 - [Data Preparation](#data-preparation)
   - [Download dataset link](#download-dataset-link)
