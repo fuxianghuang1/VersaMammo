@@ -388,32 +388,32 @@ if __name__ == "__main__":
     
     # # # # #resnet50-lvmmed
     hypar['model_name'] ="LVM-Med (R50)" ## model weights saving (or restoring) path
-    hypar["model"]=MultiTaskModel('resnet50', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/lvmmed/lvmmed_resnet.torch',ours=None,finetune=hypar['finetune'])
+    hypar["model"]=MultiTaskModel('resnet50', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/LVM-Med (R50).torch',ours=None,finetune=hypar['finetune'])
     main(hypar=hypar)
     
     # # # # #vitb-lvmmed
-    hypar['model_name'] ="LVM-Med (Vitb)" ## model weights saving (or restoring) path
-    hypar["model"]=MultiTaskModel('vit_base_patch16_224', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/lvmmed/lvmmed_vit.pth',ours=None,finetune=hypar['finetune'])
+    hypar['model_name'] ="LVM-Med (ViT-B)" ## model weights saving (or restoring) path
+    hypar["model"]=MultiTaskModel('vit_base_patch16_224', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/LVM-Med (ViT-B).pth',ours=None,finetune=hypar['finetune'])
     main(hypar=hypar)
     
     # # # #vitb-medsam
-    hypar['model_name'] ="MedSAM (Vitb)" ## model weights saving (or restoring) path
-    hypar["model"]=MultiTaskModel('vit_base_patch16_224', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/medsam_vit_b.pth',ours=None,finetune=hypar['finetune'])
+    hypar['model_name'] ="MedSAM (ViT-B)" ## model weights saving (or restoring) path
+    hypar["model"]=MultiTaskModel('vit_base_patch16_224', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/MedSAM (ViT-B).pth',ours=None,finetune=hypar['finetune'])
     main(hypar=hypar)
     
     # # #mammo-clip-b2
     hypar['model_name']="Mammo-CLIP (Enb2)"
-    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mammo-clip/b2-model-best-epoch-10.tar',ours=None,finetune=hypar['finetune'])
+    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/Mammo-CLIP (Enb2).tar',ours=None,finetune=hypar['finetune'])
     main(hypar=hypar)
     
     # # #mammo-clip-b5
     hypar['model_name'] ="Mammo-CLIP (Enb5)" ## model weights saving (or restoring) path
-    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mammo-clip/b5-model-best-epoch-7.tar',ours=None,finetune=hypar['finetune'])
+    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/Mammo-CLIP (Enb5).tar',ours=None,finetune=hypar['finetune'])
     main(hypar=hypar)
     
     # # #EfficientNet-ours
-    hypar['model_name']="VersaMammo"
-    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/VersaMammo/ENb5/ENB5_SL.pth',ours=None,finetune=hypar['finetune'])
+    hypar['model_name']="VersaMammo (Enb5)"
+    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/VersaMammo (Enb5).pth',ours=None,finetune=hypar['finetune'])
     main(hypar=hypar)
     
     hypar["input_size"] = [518, 518] 
@@ -425,7 +425,7 @@ if __name__ == "__main__":
         preprocess(hypar['input_path']+'/Eval',hypar['val_datapath'],hypar["input_size"])
     
     # # #MAMA
-    hypar['model_name']="MAMA (Vitb)"
-    hypar["model"]=MultiTaskModel('MAMA', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mama_embed_pretrained_40k_steps_last.ckpt',ours=None,finetune=hypar['finetune'])
+    hypar['model_name']="MAMA (ViT-B)"
+    hypar["model"]=MultiTaskModel('MAMA', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/MAMA (ViT-B).ckpt',ours=None,finetune=hypar['finetune'])
     main(hypar=hypar)
     
