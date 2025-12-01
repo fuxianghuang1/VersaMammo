@@ -20,7 +20,7 @@ class MammoVQA_image(torch.utils.data.Dataset):
     
     def __getitem__(self, idx):
         sample = self.loaded_data[idx]
-        image_path = '/home/jiayi/MammoVQA'+sample['Path']
+        image_path = '../../datapre/VQA_data'+sample['Path']
         image=Image.open(image_path).convert('RGB')
         question=sample['Question']
         label=sample['Answer']
