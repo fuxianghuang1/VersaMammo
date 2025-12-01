@@ -7,7 +7,7 @@
 
 - [Data Preparation](#data-preparation)
   - [Download dataset link](#download-dataset-link)
-  - [Prepare segmentation&detection datasets](#prepare-segmentation&detection-datasets)  
+  - [Prepare segmentation and detection datasets](#prepare-segmentation-and-detection-datasets)  
   - [Prepare retrieval datasets](#prepare-retrieval-datasets)
   - [Prepare classification datasets](#prepare-classification-datasets)
   - [Prepare VQA datasets](#prepare-vqa-datasets)
@@ -60,7 +60,7 @@ Datasets downloading URL:
 
 After downloaded datasets above, you have to use the correspoding processing code for it. Remember to change the dataset link in the code!!!
 
-## Prepare segmentation&detection datasets
+## Prepare segmentation and detection datasets
 ### Processing Dataset Codes and Files Linking:
 
 | Dataset Name | Process Dataset Code |
@@ -99,9 +99,19 @@ Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry
 ## Pretraining 
 
 ## Downstream task
+If you want to test all models (including MedSAM, LVM-Med, Mammo-CLIP, MAMA, and our VersaMammo), please download the corresponding [pre-trained weights](https://drive.google.com/file/d/15INPYgaPCl1PMrs-VRtkFoGhdsDK9Ftt/view?usp=sharing), and unzip it under /downstream/.
 
-## Prepare pre-trained weights
-Please download the [pre-trained weights](https://drive.google.com/file/d/1kEhA5ViCCwfnYtPbOn4rkWlikK1C4emb/view?usp=sharing) of SOTA models, and unzip it under /downstream/.
+### Training
+For all the downstream tasks, you can use the following command to train the models (please replace `downstream_task` with the name of the corresponding downstream task, e.g., `segmentation`, `detection`, `classification`, `VQA`):
+```shell
+bash /downstream/[downstream_task]/bash.sh
+```
+
+### Testing
+For all the downstream tasks, you can use the following command to test the models (please modify the downstream_task to the corresponding task):
+```shell
+bash /downstream/downstream_task/eval.sh
+```
 
 ## Quick demo
 We have also included a quick demo to support training, testing, and visualization.
@@ -148,16 +158,6 @@ Please follow the steps:
    python VQA/eval.py
    ```
 
-## Training
-For all the downstream tasks, you can use the following command to train the models (please modify the downstream_task to the corresponding task):
-```shell
-bash /downstream/downstream_task/bash.sh
-```
 
-## Testing
-For all the downstream tasks, you can use the following command to test the models (please modify the downstream_task to the corresponding task):
-```shell
-bash /downstream/downstream_task/eval.sh
-```
 
 
