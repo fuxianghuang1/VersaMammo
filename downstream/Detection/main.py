@@ -3,7 +3,7 @@ import time
 import numpy as np
 from skimage import io
 import time
-
+os.environ['CUDA_VISIBLE_DEVICES'] = '5'
 import torch, gc
 import torch.nn as nn
 import torch.optim as optim
@@ -14,7 +14,7 @@ from Faster_R_CNN_FPN import get_model
 from preprocess import preprocess
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-os.environ['CUDA_VISIBLE_DEVICES'] = '5'
+
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 def rescale_boxes(boxes, original_size, target_size=(224, 224)):
@@ -395,7 +395,7 @@ if __name__ == "__main__":
         hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/Mammo-CLIP (Enb2)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
         hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/Mammo-CLIP (Enb2)"
         hypar["restore_model"] = ""
-    hypar["model"]=get_model(backbone_name="efficientnet-b2", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mammo-clip/b2-model-best-epoch-10.tar',pretrained=True,input_size=hypar["input_size"][0])
+    hypar["model"]=get_model(backbone_name="efficientnet-b2", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/Mammo-CLIP (Enb2).tar',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
     
     # # # # # #efficientnetb5-mammo-clip
@@ -409,21 +409,21 @@ if __name__ == "__main__":
         hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/Mammo-CLIP (Enb5)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
         hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/Mammo-CLIP (Enb5)"
         hypar["restore_model"] = ""
-    hypar["model"]=get_model(backbone_name="efficientnet-b5", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mammo-clip/b5-model-best-epoch-7.tar',pretrained=True,input_size=hypar["input_size"][0])
+    hypar["model"]=get_model(backbone_name="efficientnet-b5", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/Mammo-CLIP (Enb5).tar',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
     
     # # # # # #VersaMammo
     if hypar["mode"] == "train":
         hypar["valid_out_dir"] = "" ## for "train" model leave it as "", for "valid"("inference") mode: set it according to your local directory
-        hypar["model_path"] =f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/VersaMammo" ## model weights saving (or restoring) path
+        hypar["model_path"] =f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/VersaMammo (Enb5)" ## model weights saving (or restoring) path
         hypar["restore_model"] = "" ## name of the segmentation model weights .pth for resume training process from last stop or for the inferencing
         hypar["start_ite"] = 0 ## start iteration for the training, can be changed to match the restored training process
         hypar["plot_output"]=False
     else:
-        hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/VersaMammo"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
-        hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/VersaMammo"
+        hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/VersaMammo (Enb5)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
+        hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/VersaMammo (Enb5)"
         hypar["restore_model"] = ""
-    hypar["model"]=get_model(backbone_name="VersaMammo", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/VersaMammo/ENb5/ENB5_SL.pth',pretrained=True,input_size=hypar["input_size"][0])
+    hypar["model"]=get_model(backbone_name="VersaMammo", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/VersaMammo (Enb5).pth',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
     
     
@@ -438,7 +438,7 @@ if __name__ == "__main__":
         hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/LVM-Med (R50)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
         hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/LVM-Med (R50)"
         hypar["restore_model"] = ""
-    hypar["model"]=get_model(backbone_name="resnet50", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/lvmmed/lvmmed_resnet.torch',pretrained=True,input_size=hypar["input_size"][0])
+    hypar["model"]=get_model(backbone_name="resnet50", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/LVM-Med (R50).torch',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
     
     
@@ -447,29 +447,29 @@ if __name__ == "__main__":
     # # # # #vitb-lvmmed
     if hypar["mode"] == "train":
         hypar["valid_out_dir"] = "" ## for "train" model leave it as "", for "valid"("inference") mode: set it according to your local directory
-        hypar["model_path"] =f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/LVM-Med (Vitb)" ## model weights saving (or restoring) path
+        hypar["model_path"] =f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/LVM-Med (ViT-B)" ## model weights saving (or restoring) path
         hypar["restore_model"] = "" ## name of the segmentation model weights .pth for resume training process from last stop or for the inferencing
         hypar["start_ite"] = 0 ## start iteration for the training, can be changed to match the restored training process
         hypar["plot_output"]=False
     else:
-        hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/LVM-Med (Vitb)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
-        hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/LVM-Med (Vitb)"
+        hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/LVM-Med (ViT-B)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
+        hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/LVM-Med (ViT-B)"
         hypar["restore_model"] = ""
-    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/lvmmed/lvmmed_vit.pth',pretrained=True,input_size=hypar["input_size"][0])
+    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/LVM-Med (ViT-B).pth',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
     
     # # # #vitb-medsam
     if hypar["mode"] == "train":
         hypar["valid_out_dir"] = "" ## for "train" model leave it as "", for "valid"("inference") mode: set it according to your local directory
-        hypar["model_path"] =f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/MedSAM (Vitb)" ## model weights saving (or restoring) path
+        hypar["model_path"] =f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/MedSAM (ViT-B)" ## model weights saving (or restoring) path
         hypar["restore_model"] = "" ## name of the segmentation model weights .pth for resume training process from last stop or for the inferencing
         hypar["start_ite"] = 0 ## start iteration for the training, can be changed to match the restored training process
         hypar["plot_output"]=False
     else:
-        hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/MedSAM (Vitb)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
-        hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/MedSAM (Vitb)"
+        hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/MedSAM (ViT-B)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
+        hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/MedSAM (ViT-B)"
         hypar["restore_model"] = ""
-    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/medsam_vit_b.pth',pretrained=True,input_size=hypar["input_size"][0])
+    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/MedSAM (ViT-B).pth',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
 
     
@@ -486,13 +486,13 @@ if __name__ == "__main__":
     # # #MAMA
     if hypar["mode"] == "train":
         hypar["valid_out_dir"] = "" ## for "train" model leave it as "", for "valid"("inference") mode: set it according to your local directory
-        hypar["model_path"] =f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/MAMA (Vitb)" ## model weights saving (or restoring) path
+        hypar["model_path"] =f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/MAMA (ViT-B)" ## model weights saving (or restoring) path
         hypar["restore_model"] = "" ## name of the segmentation model weights .pth for resume training process from last stop or for the inferencing
         hypar["start_ite"] = 0 ## start iteration for the training, can be changed to match the restored training process
         hypar["plot_output"]=False
     else:
-        hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/MAMA (Vitb)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
-        hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/MAMA (Vitb)"
+        hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/MAMA (ViT-B)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
+        hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/MAMA (ViT-B)"
         hypar["restore_model"] = ""
-    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mama_embed_pretrained_40k_steps_last.ckpt',pretrained=False,ours=None,input_size=hypar["input_size"][0])
+    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/MAMA (ViT-B).ckpt',pretrained=False,ours=None,input_size=hypar["input_size"][0])
     main(hypar=hypar)
