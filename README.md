@@ -102,7 +102,7 @@ Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry
 If you want to test all models (including MedSAM, LVM-Med, Mammo-CLIP, MAMA, and our VersaMammo), please download the corresponding [pre-trained weights](https://drive.google.com/file/d/15INPYgaPCl1PMrs-VRtkFoGhdsDK9Ftt/view?usp=sharing), and unzip it under /downstream/.
 
 ### Training
-For all the downstream tasks, you can use the following command to train the models (please replace `downstream_task` with the name of the corresponding downstream task, e.g., `segmentation`, `detection`, `classification`, `VQA`):
+For all the downstream tasks, you can use the following command to train the models (please replace `downstream_task` with the name of the corresponding downstream task, e.g., `Segment`, `Detection`, `classification`, `VQA`, `Multi-Classification`):
 ```shell
 bash /downstream/[downstream_task]/bash.sh
 ```
