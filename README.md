@@ -3,7 +3,7 @@
 
 - [Prerequisites](#prerequisites)
   - [Pretraining prerequisites](#pretraining-prerequisites)
-  - [Downstream task prerequisites](#downstream-task-prerequisites)
+  - [Downstream task prerequisites](downstream-task-prerequisites)
 
 - [Data Preparation](#data-preparation)
   - [Download dataset link](#download-dataset-link)
@@ -84,7 +84,7 @@ Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry
 
 # Downstream task
 
-## Clone repository
+## Downstream task prerequisites
 ```shell
 git clone https://github.com/fuxianghuang1/VersaMammo.git
 cd VersaMammo/downstream
