@@ -93,31 +93,44 @@ After downloaded datasets above, you have to use the correspoding processing cod
 
 
 ## Prepare VQA datasets
-Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry/MammoVQA), and put the dataset's json files under /downstream/VQA/.
+Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry/MammoVQA), and put the dataset's images under /datapre/VQA_data, dataset's json files under /downstream/VQA/.
 
-You will have the following structure:
+## You will have the following structure:
 ````
 VersaMammo
 |--datapre
-   |--mimic_cxr
-      |--base_probs.json
-      |--clip_text_features.json
-      |--mimic_annotation_promptmrg.json
-      |--images
-         |--p10
-         |--p11
+   |--classification_data
+      |--INbreast
+         |--Train
+            |--20586934
+               |--img.jpg
+               |--info_dict.npy
+            ...
+         |--Eval
+         |--Test
+      |--BMCD
+      ...
+   |--segdetdata
+      |--INbreast
+         |--Train
+            |--20586934
+               |--bboxes.npy
+               |--img.jpg
+               |--mask.png
+            ...
+         |--Eval
+         |--Test
+      |--CBIS-DDSM
+      ...
+   |--VQA_data
+      |--INbreast
+         |--20586934
+            |--img.jpg
+            |--info_dict.npy
          ...
-   |--iu_xray
-      |--iu_annotation_promptmrg.json
-      |--images
-         |--CXR1000_IM-0003
-         |--CXR1001_IM-0004
-         ...
-|--checkpoints
-   |--stanford
-      |--chexbert
-         |--chexbert.pth
-...
+      |--BMCD
+      ...
+   ...
 ````
 
 # Run
