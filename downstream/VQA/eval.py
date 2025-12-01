@@ -4,6 +4,7 @@ import numpy as np
 from skimage import io
 import time
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
+os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 import torch, gc
 import torch.nn as nn
 from Mammo_VQA_dataset import MammoVQA_image,custom_collate_fn
@@ -16,7 +17,7 @@ import contextlib
 from sklearn.preprocessing import label_binarize
 from sklearn.preprocessing import OneHotEncoder
 import json
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -279,38 +280,38 @@ if __name__ == "__main__":
     
     # # # #resnet50-lvmmed
     hypar['restore_model'] =hypar['model_path']+"LVM-Med (R50)"+".pth" ## model weights saving (or restoring) path
-    hypar["model"]=MultiTaskModel('resnet50', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/lvmmed/lvmmed_resnet.torch',ours=None)
+    hypar["model"]=MultiTaskModel('resnet50', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/LVM-Med (R50).torch',ours=None)
     main(hypar=hypar)
     
     # # #vitb-lvmmed
-    hypar["restore_model"]=hypar['model_path']+"LVM-Med (Vitb)"+".pth" ## model weights saving (or restoring) path
-    hypar["model"]=MultiTaskModel('vit_base_patch16_224', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/lvmmed/lvmmed_vit.pth',ours=None)
+    hypar["restore_model"]=hypar['model_path']+"LVM-Med (ViT-B)"+".pth" ## model weights saving (or restoring) path
+    hypar["model"]=MultiTaskModel('vit_base_patch16_224', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/LVM-Med (ViT-B).pth',ours=None)
     main(hypar=hypar)
     
     # #vitb-medsam
-    hypar["restore_model"]=hypar['model_path']+"MedSAM (Vitb)"+".pth" ## model weights saving (or restoring) path
-    hypar["model"]=MultiTaskModel('vit_base_patch16_224', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/medsam_vit_b.pth',ours=None)
+    hypar["restore_model"]=hypar['model_path']+"MedSAM (ViT-B)"+".pth" ## model weights saving (or restoring) path
+    hypar["model"]=MultiTaskModel('vit_base_patch16_224', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/MedSAM (ViT-B).pth',ours=None)
     main(hypar=hypar)
     
     #mammo-clip-b2
     hypar["restore_model"]=hypar['model_path']+"Mammo-CLIP (Enb2)"+".pth"
-    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mammo-clip/b2-model-best-epoch-10.tar',ours=None)
+    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/Mammo-CLIP (Enb2).tar',ours=None)
     main(hypar=hypar)
     
     # # #mammo-clip-b5
     hypar["restore_model"]=hypar['model_path']+"Mammo-CLIP (Enb5)"+".pth" ## model weights saving (or restoring) path
-    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mammo-clip/b5-model-best-epoch-7.tar',ours=None)
+    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/Mammo-CLIP (Enb5).tar',ours=None)
     main(hypar=hypar)
     
     hypar["input_size"] = [518, 518]
     
     # # # #VersaMammo
-    hypar["restore_model"]=hypar['model_path']+"VersaMammo"+".pth" ## model weights saving (or restoring) path
+    hypar["restore_model"]=hypar['model_path']+"VersaMammo (ViT-B)"+".pth" ## model weights saving (or restoring) path
     hypar["model"]=MultiTaskModel('vit_base_patch16_224', hypar['label_mappings'],checkpoint_path=None,ours='vitb14versamammo')
     main(hypar=hypar)
     
     # # #MaMA
-    hypar['restore_model'] =hypar['model_path']+"MAMA (Vitb)"+".pth"
-    hypar["model"]=MultiTaskModel('mama', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mama_embed_pretrained_40k_steps_last.ckpt',ours=None)
+    hypar['restore_model'] =hypar['model_path']+"MAMA (ViT-B)"+".pth"
+    hypar["model"]=MultiTaskModel('mama', hypar['label_mappings'],checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/MAMA (ViT-B).ckpt',ours=None)
     main(hypar=hypar)
     
