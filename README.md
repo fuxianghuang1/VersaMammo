@@ -95,6 +95,31 @@ After downloaded datasets above, you have to use the correspoding processing cod
 ## Prepare VQA datasets
 Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry/MammoVQA), and put the dataset's json files under /downstream/VQA/.
 
+You will have the following structure:
+````
+VersaMammo
+|--datapre
+   |--mimic_cxr
+      |--base_probs.json
+      |--clip_text_features.json
+      |--mimic_annotation_promptmrg.json
+      |--images
+         |--p10
+         |--p11
+         ...
+   |--iu_xray
+      |--iu_annotation_promptmrg.json
+      |--images
+         |--CXR1000_IM-0003
+         |--CXR1001_IM-0004
+         ...
+|--checkpoints
+   |--stanford
+      |--chexbert
+         |--chexbert.pth
+...
+````
+
 # Run
 ## Pretraining 
 
