@@ -102,19 +102,19 @@ Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry
 If you want to test all models (including MedSAM, LVM-Med, Mammo-CLIP, MAMA, and our VersaMammo), please download the corresponding [pre-trained weights](https://drive.google.com/file/d/15INPYgaPCl1PMrs-VRtkFoGhdsDK9Ftt/view?usp=sharing), and unzip it under /downstream/.
 
 ### Training
-For all the downstream tasks, you can use the following command to train the models (please replace `downstream_task` with the name of the corresponding downstream task, e.g., `Segment`, `Detection`, `classification`, `VQA`, `Multi-Classification`):
+For all the downstream tasks, you can use the following command to train the models (please replace `downstream_task` with the name of the corresponding downstream task, e.g., `Segment`, `Detection`, `classification`, `VQA`, `Multi_Classification`):
 ```shell
 bash /downstream/[downstream_task]/bash.sh
 ```
 
 ### Testing
-For all the downstream tasks, you can use the following command to test the models (please modify the downstream_task to the corresponding task):
+For all the downstream tasks, you can use the following command to test the models (please replace `downstream_task` with the name of the corresponding downstream task, e.g., `Segment`, `Detection`, `classification`, `VQA`, `Multi_Classification`):
 ```shell
-bash /downstream/downstream_task/eval.sh
+bash /downstream/[downstream_task]/eval.sh
 ```
 
-## Quick demo
-We have also included a quick demo to support training, testing, and visualization.
+### Quick demo
+If you want to quickly test the VersaMammo, we have also included a quick demo to support training and testing.
 Please follow the steps:
 1. Download the preprocessed [demo data](https://drive.google.com/file/d/17mio1t455qQIyVDgtBBfhEK4kKAtwCDG/view?usp=sharing) (Thanks for [INbreast dataset](https://www.sciencedirect.com/science/article/abs/pii/S107663321100451X)), and put it under /downstream/Quick_demo/.
 2. Download the [pre-trained weight](https://drive.google.com/file/d/1ryAhGluZls7Oq4ELHVj4hcq1TM8gHGO5/view?usp=sharing) for VQA test, and put it under /downstream/Quick_demo/VQA/.
