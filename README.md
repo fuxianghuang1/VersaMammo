@@ -137,7 +137,7 @@ VersaMammo
 ## Pretraining 
 
 ## Downstream task
-If you want to test all models (including MedSAM, LVM-Med, Mammo-CLIP, MAMA, and our VersaMammo), please download the corresponding [pre-trained weights](https://drive.google.com/file/d/14E1eQxjrbU-U_7sHksiGZjUtoge4-I33/view?usp=sharing), and unzip it under /downstream/.
+If you want to train or test all models (including MedSAM, LVM-Med, Mammo-CLIP, MAMA, and our VersaMammo), please download the corresponding [pre-trained weights](https://drive.google.com/file/d/14E1eQxjrbU-U_7sHksiGZjUtoge4-I33/view?usp=sharing), and unzip it under /downstream/.
 
 ### Training
 For all the downstream tasks, you can use the following command to train the models (please replace `downstream_task` with the name of the corresponding downstream task, e.g., `Segment`, `Detection`, `classification`, `VQA`, `Multi_Classification`):
