@@ -2,8 +2,8 @@
 ## Contents
 
 - [Installation](#Installation)
-  - [Pretraining](#pretraining-prerequisites)
-  - [Downstream task](#downstream-task-prerequisites)
+  - [Pretraining prerequisites](#pretraining-prerequisites)
+  - [Downstream task prerequisites](#downstream-task-prerequisites)
 
 - [Data Preparation](#data-preparation)
   - [Download dataset link](#download-dataset-link)
