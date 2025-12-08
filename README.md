@@ -25,7 +25,7 @@ git clone https://github.com/fuxianghuang1/VersaMammo.git
 cd VersaMammo/pretraining
 
 conda create -n versamammo_pretrain python==3.9
-conda activate downstream
+conda activate versamammo_pretrain
 # for pip
 python -m pip install -r requirements.txt
 
