@@ -1,9 +1,9 @@
 
 ## Contents
 
-- [Prerequisites](#prerequisites)
-  - [Pretraining prerequisites](#pretraining-prerequisites)
-  - [Downstream task prerequisites](#downstream-task-prerequisites)
+- [Installation](#Installation)
+  - [Pretraining](#pretraining-prerequisites)
+  - [Downstream task](#downstream-task-prerequisites)
 
 - [Data Preparation](#data-preparation)
   - [Download dataset link](#download-dataset-link)
@@ -18,19 +18,21 @@
 
 - [Acknowledgements](#acknowledgements)
 
-# Prerequisites
+# Installation
 ## Pretraining prerequisites
 ```shell
 git clone https://github.com/fuxianghuang1/VersaMammo.git
 cd VersaMammo/pretraining
 
-conda create -n versamammo_pretrain python==3.9
-conda activate versamammo_pretrain
-# for pip
-python -m pip install -r requirements.txt
+# Create environment from file
+conda env create -f environment.yml
 
-# for conda
-conda env update -f environment.yml
+# Activate environment
+conda activate versamammo_pretrain
+
+# If you have base CUDA environment
+pip install -r requirements.txt
+
 ```
 
 ## Downstream task prerequisites
