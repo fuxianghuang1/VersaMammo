@@ -182,6 +182,21 @@ def valid(net, valid_dataloader, hypar, epoch=0):
     
     tmp_iou.append(mean_iou)
 
+    iou_scores = []
+    from sklearn.utils import resample
+    for _ in range(1000):
+        indices = resample(np.arange(len(all_mean_ious)), random_state=None)
+        iou_bs = np.array(all_mean_ious)[indices]
+        iou_scores.append(np.mean(iou_bs))
+
+    iou_ci = np.percentile(iou_scores, [2.5, 97.5])
+
+    ci_path=os.path.join(os.path.dirname(hypar["valid_out_dir"]),hypar["restore_model"].split('/')[-1].split('.')[0])
+    if(not os.path.exists(ci_path)):
+        os.makedirs(ci_path)
+    np.save(os.path.join(ci_path, "iou_ci.npy"), iou_scores)
+
+    print(f'Mean IoU: {mean_iou:.4f}, IoU CI: [{iou_ci[0]:.4f}, {iou_ci[1]:.4f}]')
 
     return tmp_iou, i_val, tmp_time
 
