@@ -169,6 +169,7 @@ bash /downstream/[downstream_task]/eval.sh
 If you want to quickly test the VersaMammo, we have also included a quick demo to support training and testing.
 Please follow the steps:
 1. If you want to train and evaluate the models (except VQA), please follow here: If you have already downloaded the pre-trained weights of all models and have the /downstream/Sotas directory, you can skip Step 1. If not, please download the [pre-trained weights](https://drive.google.com/file/d/1HmEzoJDs99-t6_mUnrjnkcY8nTJ8WeVp/view?usp=sharing) of VersaMammo and place them under /downstream/Sotas/.
+
    If you only want to evaluate the models, please follow here: please download the [pre-trained detection models]() and [pre-trained segmentation models](), and put them under /downstream/Quick_demo/Detection and /downstream/Quick_demo/Segment, seperately.
 3. Download the preprocessed [demo data](https://drive.google.com/file/d/17mio1t455qQIyVDgtBBfhEK4kKAtwCDG/view?usp=sharing) (Thanks for [INbreast dataset](https://www.sciencedirect.com/science/article/abs/pii/S107663321100451X)), and put it under /downstream/Quick_demo/.
 4. Download the [pre-trained weight](https://drive.google.com/file/d/1ryAhGluZls7Oq4ELHVj4hcq1TM8gHGO5/view?usp=sharing) for VQA test, and put it under /downstream/Quick_demo/VQA/.
