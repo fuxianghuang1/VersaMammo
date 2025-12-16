@@ -151,7 +151,7 @@ VersaMammo
 ## Pretraining 
 
 ## Downstream task
-If you want to train or test all models (including MedSAM, LVM-Med, Mammo-CLIP, MAMA, and our VersaMammo), please download the corresponding [pre-trained weights](https://drive.google.com/file/d/14E1eQxjrbU-U_7sHksiGZjUtoge4-I33/view?usp=sharing), and unzip it under /downstream/.
+If you want to train and test all models (including MedSAM, LVM-Med, Mammo-CLIP, MAMA, and our VersaMammo), please download the corresponding [pre-trained weights](https://drive.google.com/file/d/14E1eQxjrbU-U_7sHksiGZjUtoge4-I33/view?usp=sharing), and unzip it under /downstream/.
 
 ### Training
 For all the downstream tasks, you can use the following command to train the models (please replace `downstream_task` with the name of the corresponding downstream task, e.g., `Segment`, `Detection`, `classification`, `VQA`, `Multi_Classification`):
@@ -168,10 +168,12 @@ bash /downstream/[downstream_task]/eval.sh
 ### Quick demo
 If you want to quickly test the VersaMammo, we have also included a quick demo to support training and testing.
 Please follow the steps:
-1. If you have already downloaded the pre-trained weights of all models and have the /downstream/Sotas directory, you can skip Step 1. If not, please download the [pre-trained weights](https://drive.google.com/file/d/1HmEzoJDs99-t6_mUnrjnkcY8nTJ8WeVp/view?usp=sharing) of VersaMammo and place them under /downstream/Sotas/.
-2. Download the preprocessed [demo data](https://drive.google.com/file/d/17mio1t455qQIyVDgtBBfhEK4kKAtwCDG/view?usp=sharing) (Thanks for [INbreast dataset](https://www.sciencedirect.com/science/article/abs/pii/S107663321100451X)), and put it under /downstream/Quick_demo/.
-3. Download the [pre-trained weight](https://drive.google.com/file/d/1ryAhGluZls7Oq4ELHVj4hcq1TM8gHGO5/view?usp=sharing) for VQA test, and put it under /downstream/Quick_demo/VQA/.
-4. ```shell
+1. If you want to train and evaluate the models (except VQA), please follow here: If you have already downloaded the pre-trained weights of all models and have the /downstream/Sotas directory, you can skip Step 1. If not, please download the [pre-trained weights](https://drive.google.com/file/d/1HmEzoJDs99-t6_mUnrjnkcY8nTJ8WeVp/view?usp=sharing) of VersaMammo and place them under /downstream/Sotas/.
+
+   If you only want to evaluate the models, please follow here: please download the [pre-trained detection models](https://drive.google.com/file/d/1KwslllzJFB3k3OxRd6eLXN19QdMFPsV1/view?usp=sharing) and [pre-trained segmentation models](https://drive.google.com/file/d/1bOhLd9hIoUjalnerT-_T-_-gDS_1CUKo/view?usp=sharing), and unzip them under /downstream/Quick_demo/Detection and /downstream/Quick_demo/Segment, seperately.
+3. Download the preprocessed [demo data](https://drive.google.com/file/d/17mio1t455qQIyVDgtBBfhEK4kKAtwCDG/view?usp=sharing) (Thanks for [INbreast dataset](https://www.sciencedirect.com/science/article/abs/pii/S107663321100451X)), and put it under /downstream/Quick_demo/.
+4. Download the [pre-trained weight](https://drive.google.com/file/d/1ryAhGluZls7Oq4ELHVj4hcq1TM8gHGO5/view?usp=sharing) for VQA test, and put it under /downstream/Quick_demo/VQA/.
+5. ```shell
    cd Quick_demo
    ```
 

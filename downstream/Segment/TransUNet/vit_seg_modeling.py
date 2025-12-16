@@ -19,8 +19,7 @@ from scipy import ndimage
 # from . import vit_seg_configs as configs
 from .vit_seg_modeling_resnet_skip import ResNetV2
 import sys
-sys.path.append('/home/jiayi/Baseline/Segment/Ours/models')
-from image_encoder import load_image_encoder
+from VersaMammo.models.image_encoder import load_image_encoder
 from functools import partial
 from timm import create_model
 import time

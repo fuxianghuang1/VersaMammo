@@ -124,6 +124,24 @@ def valid(net, valid_dataloader, hypar, epoch=0):
     tmp_dice.append(np.mean(DICE))
     print('Mean Dice:',np.mean(DICE))
 
+    from sklearn.utils import resample
+    dice_scores = []
+    for _ in range(1000):
+        # Bootstrap sample
+        indices = resample(np.arange(len(DICE)), random_state=None)
+        dice_bs = DICE[indices]
+        dice_scores.append(np.mean(dice_bs))
+
+    # Calculate confidence intervals
+    dice_ci = np.percentile(dice_scores, [2.5, 97.5])
+
+    ci_path=os.path.join(os.path.dirname(hypar["valid_out_dir"]),hypar["restore_model"].split('/')[-1].split('.')[0])
+    if(not os.path.exists(ci_path)):
+        os.makedirs(ci_path)
+    np.save(os.path.join(ci_path, "dice_ci.npy"), dice_scores)
+
+    print(f'Mean Dice: {np.mean(DICE):.4f}, Dice CI: [{dice_ci[0]:.4f}, {dice_ci[1]:.4f}]')
+
     return tmp_dice, val_loss, tar_loss, i_val, tmp_time
 
 def main(hypar): # model: "train", "test"

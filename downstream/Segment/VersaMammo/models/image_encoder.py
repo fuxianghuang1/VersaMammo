@@ -2,10 +2,10 @@
 import torch
 from torch import nn
 # from models import ResNet
-import vision_transformer as vits
+import VersaMammo.models.vision_transformer as vits
 import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
-base_dir=current_dir.split('FM_downstream')[0]+'FM_downstream'
+base_dir=current_dir.split('downstream')[0]+'downstream'
 def dinov2_ckpt_wrapper(ckpt):
     # the dinov2 framework saved ckpt, e.g., teacher_checkpint.pth. 
     new_dict = {}

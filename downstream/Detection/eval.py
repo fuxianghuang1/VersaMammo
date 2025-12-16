@@ -182,6 +182,21 @@ def valid(net, valid_dataloader, hypar, epoch=0):
     
     tmp_iou.append(mean_iou)
 
+    iou_scores = []
+    from sklearn.utils import resample
+    for _ in range(1000):
+        indices = resample(np.arange(len(all_mean_ious)), random_state=None)
+        iou_bs = np.array(all_mean_ious)[indices]
+        iou_scores.append(np.mean(iou_bs))
+
+    iou_ci = np.percentile(iou_scores, [2.5, 97.5])
+
+    ci_path=os.path.join(os.path.dirname(hypar["valid_out_dir"]),hypar["restore_model"].split('/')[-1].split('.')[0])
+    if(not os.path.exists(ci_path)):
+        os.makedirs(ci_path)
+    np.save(os.path.join(ci_path, "iou_ci.npy"), iou_scores)
+
+    print(f'Mean IoU: {mean_iou:.4f}, IoU CI: [{iou_ci[0]:.4f}, {iou_ci[1]:.4f}]')
 
     return tmp_iou, i_val, tmp_time
 
@@ -272,7 +287,7 @@ if __name__ == "__main__":
     hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/Mammo-CLIP (Enb2)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
     hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/Mammo-CLIP (Enb2)"
     hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/Mammo-CLIP (Enb2).pth"
-    hypar["model"]=get_model(backbone_name="efficientnet-b2", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mammo-clip/b2-model-best-epoch-10.tar',pretrained=True)
+    hypar["model"]=get_model(backbone_name="efficientnet-b2", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mammo-clip/b2-model-best-epoch-10.tar',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
     
     # # # # # # #efficientnetb5-mammo-clip
@@ -280,7 +295,7 @@ if __name__ == "__main__":
     hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/Mammo-CLIP (Enb5)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
     hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/Mammo-CLIP (Enb5)"
     hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/Mammo-CLIP (Enb5).pth"
-    hypar["model"]=get_model(backbone_name="efficientnet-b5", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mammo-clip/b5-model-best-epoch-7.tar',pretrained=True)
+    hypar["model"]=get_model(backbone_name="efficientnet-b5", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mammo-clip/b5-model-best-epoch-7.tar',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
     
     # # # # # #VersaMammo
@@ -288,7 +303,7 @@ if __name__ == "__main__":
     hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/VersaMammo (Enb5)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
     hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/VersaMammo (Enb5)"
     hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/VersaMammo (Enb5).pth"
-    hypar["model"]=get_model(backbone_name="VersaMammo", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/VersaMammo (Enb5).pth',pretrained=True)
+    hypar["model"]=get_model(backbone_name="VersaMammo", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/VersaMammo (Enb5).pth',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
     
     # # # # #lvmmed-resnet50
@@ -296,7 +311,7 @@ if __name__ == "__main__":
     hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/LVM-Med (R50)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
     hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/LVM-Med (R50)"
     hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/LVM-Med (R50).pth"
-    hypar["model"]=get_model(backbone_name="resnet50", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/LVM-Med (R50).torch',pretrained=True)
+    hypar["model"]=get_model(backbone_name="resnet50", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/LVM-Med (R50).torch',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
     
     # # # #vitb-lvmmed
@@ -304,7 +319,7 @@ if __name__ == "__main__":
     hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/LVM-Med (ViT-B)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
     hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/LVM-Med (ViT-B)"
     hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/LVM-Med (ViT-B).pth"
-    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/LVM-Med (ViT-B).pth',pretrained=True)
+    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/LVM-Med (ViT-B).pth',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
     
     # # # # #vitb-medsam
@@ -312,7 +327,7 @@ if __name__ == "__main__":
     hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/MedSAM (ViT-B)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
     hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/MedSAM (ViT-B)"
     hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/MedSAM (ViT-B).pth"
-    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/MedSAM (ViT-B).pth',pretrained=True)
+    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/MedSAM (ViT-B).pth',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
 
     
@@ -327,5 +342,5 @@ if __name__ == "__main__":
     hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/MAMA (ViT-B)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
     hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/MAMA (ViT-B)"
     hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/MAMA (ViT-B).pth"
-    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/MAMA (ViT-B).ckpt',pretrained=False,ours=None)
+    hypar["model"]=get_model(backbone_name="vit-b", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/MAMA (ViT-B).ckpt',pretrained=False,ours=None,input_size=hypar["input_size"][0])
     main(hypar=hypar)
