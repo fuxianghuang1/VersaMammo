@@ -86,17 +86,18 @@ Download the **EMBED**, **RSNA**, and **VinDr-Mammo** datasets (in DICOM format)
 #### **Preprocess the pretraining data**
 Run the preprocessing script to convert and organize the raw data:
 ```bash
-cd datapre/pretrain_data
-python pre_data.py
+cd datapre/preprocess
+python pretrain_data.py
 ```
-> **Important:** Before running the script, **please update the file paths** inside `pre_data.py` to match your actual data storage locations.
+> **Important:** Before running the script, **please update the file paths** inside `pretrain_data.py` to match your actual data storage locations.
 
 #### **Configure Data Index**
-The `predata.csv` file contains the metadata for all pretraining data.  
+The `pretrain_data.csv` file contains the metadata for a part of pretraining data.  
 **You must replace the placeholder path `../dataset` in this file with your actual pretraining data path.**
 
+#### **Stage 1**
 
-#### **Stage 2 Specific Preparation**
+#### **Stage 2**
 If you are proceeding to **Stage 2 training**, you first need to download the image features extracted after Stage 1 and place them here:
 - [Download Features (Selected Data)](https://drive.google.com/file/d/1Diu1aS5Y5xIol8llEdnSe-6415hiQuaD/view?usp=drive_link)
 - [Download Features (Full Pretraining Data)](https://drive.google.com/file/d/1lfGztm0wi0NoMloD1FIZJpBzNjBMXxpg/view?usp=drive_link)
