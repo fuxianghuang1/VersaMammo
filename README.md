@@ -7,6 +7,7 @@
 
 - [Data Preparation](#data-preparation)
   - [Download dataset link](#download-dataset-link)
+  - [Prepare pretraining datasets](#prepare-pretraining-datasets)
   - [Prepare segmentation and detection datasets](#prepare-segmentation-and-detection-datasets)  
   - [Prepare retrieval datasets](#prepare-retrieval-datasets)
   - [Prepare classification datasets](#prepare-classification-datasets)
@@ -72,8 +73,38 @@ Datasets downloading URL:
 | MM | [Link](https://data.mendeley.com/datasets/fvjhtskg93/1) | [Mammogram mastery: a robust dataset for breast cancer detection and medical education](https://www.sciencedirect.com/science/article/pii/S2352340924006000) | Open Access |
 | NLBS | [Link](https://www.frdr-dfdr.ca/repo/dataset/cb5ddb98-ccdf-455c-886c-c9750a8c34c2) | [Full field digital mammography dataset from a population screening program](https://www.nature.com/articles/s41597-025-05866-0.pdf) | Open Access |
 
-After downloaded datasets above, you have to use the correspoding processing code for it. Remember to change the dataset link in the code!!!
+> **Important:** After downloaded datasets above, you have to use the correspoding processing code for it. **Remember to change the dataset path in the code!!!**
 
+## Prepare pretraining datasets
+
+Follow the steps below to prepare the pretraining data. The same data may also be used for fine-tuning in downstream tasks.
+
+#### **Raw Data**
+Download the **EMBED**, **RSNA**, and **VinDr-Mammo** datasets (in DICOM format) and save all files to your target folder.
+> **Storage Note:** This step requires approximately **3 GB** of free disk space.
+
+#### **Preprocess the Data**
+Run the preprocessing script to convert and organize the raw data:
+```bash
+cd datapre/pretrain_data
+python pre_data.py
+```
+> **Important:** Before running the script, **please update the file paths** inside `pre_data.py` to match your actual data storage locations.
+
+#### **Step 3: Configure Data Index**
+The `predata.csv` file contains the metadata for all pretraining data.  
+**You must replace the placeholder path `../dataset` in this file with your actual pretraining data path.**
+
+#### **Stage 2 Specific Preparation**
+If you are proceeding to **Stage 2 training**, you first need to download the image features extracted after Stage 1 and place them here:
+- [Download Features (Selected Data)](https://drive.google.com/file/d/1Diu1aS5Y5xIol8llEdnSe-6415hiQuaD/view?usp=drive_link)
+- [Download Features (Full Pretraining Data)](https://drive.google.com/file/d/1lfGztm0wi0NoMloD1FIZJpBzNjBMXxpg/view?usp=drive_link)
+  
+#### **Quick Start (For Trial Runs)**
+To quickly test the code without processing raw data, you can directly download our preprocessed data and place it in this folder:
+> Download link for preprocessed data: `[Link to be added]`
+
+这个格式严格遵循了 README 文档的常见结构，并使用 Markdown 语法确保了在 GitHub 上的良好显示效果。您可以根据需要调整标题级别或补充下载链接。
 ## Prepare segmentation and detection datasets
 ### Processing Dataset Codes and Files Linking:
 
