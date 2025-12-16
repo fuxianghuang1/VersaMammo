@@ -1,1 +1,1 @@
-The data of segmentation and detection should be put here.
+The datasets for segmentation and detection should be put here.

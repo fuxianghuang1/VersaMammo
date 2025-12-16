@@ -1,0 +1,48 @@
+dino:
+  head_n_prototypes: 131072  #65536
+  head_bottleneck_dim: 384
+  koleo_loss_weight: 0.1
+ibot:
+  separate_head: true
+  head_n_prototypes: 131072   #65536
+
+density:
+  loss_weight: 0
+  n_class: 4
+  
+birads:
+  loss_weight: 0
+  n_class: 5
+
+train:
+  dataset_path: dinov2/datapath/predata.csv
+  batch_size_per_gpu: 4
+centering: sinkhorn_knopp
+student:
+  arch: vit_base   
+  patch_size: 14
+  drop_path_rate: 0.4
+  # pretrained_weights: /home/huangfuxiang/dinov2/scripts/formated_vit-b_wo_reg.pth
+  ffn_layer: mlp 
+  block_chunks: 4
+teacher:
+  momentum_teacher: 0.994
+optim:
+  epochs: 1000
+  weight_decay_end: 0.2
+  base_lr: 0.0001  # learning rate for a batch size of 1024
+  warmup_epochs: 30
+  layerwise_decay: 1.0
+
+crops:
+  global_crops_scale:
+  - 0.95
+  - 1.0
+  local_crops_number: 2
+  local_crops_scale:
+  - 0.2
+  - 0.6
+  global_crops_size: 224
+  local_crops_size: 98  
+evaluation:
+  eval_period_iterations: 12500

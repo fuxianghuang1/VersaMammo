@@ -1,1 +1,1 @@
-The data of classification and multi-classification should be put here.
+The datasets for classification and multi-classification should be put here.
