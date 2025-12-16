@@ -27,11 +27,7 @@ class MammogramDataset(Dataset):
         
         print("Unique BI-RADS labels:", unique_birads_labels)  
         print("Unique Density labels:", unique_density_labels)
-        #  
-        # train_df = df[df['split'] == "training"][:2000]  
-        # self.image_paths = train_df['path'].tolist()  
-        # self.birads_labels = train_df['birads'].tolist()  
-        # self.density_labels = train_df['density'].tolist()  
+
         self.failed_paths = set()  
   
     def __len__(self):  
