@@ -79,11 +79,11 @@ Datasets downloading URL:
 
 Follow the steps below to prepare the pretraining data. The same data may also be used for fine-tuning in downstream tasks.
 
-#### **Raw Data**
+#### **Raw data**
 Download the **EMBED**, **RSNA**, and **VinDr-Mammo** datasets (in DICOM format) and save all files to your target folder.
 > **Storage Note:** This step requires approximately **3 GB** of free disk space.
 
-#### **Preprocess the Data**
+#### **Preprocess the pretraining data**
 Run the preprocessing script to convert and organize the raw data:
 ```bash
 cd datapre/pretrain_data
@@ -91,9 +91,10 @@ python pre_data.py
 ```
 > **Important:** Before running the script, **please update the file paths** inside `pre_data.py` to match your actual data storage locations.
 
-#### **Step 3: Configure Data Index**
+#### **Configure Data Index**
 The `predata.csv` file contains the metadata for all pretraining data.  
 **You must replace the placeholder path `../dataset` in this file with your actual pretraining data path.**
+
 
 #### **Stage 2 Specific Preparation**
 If you are proceeding to **Stage 2 training**, you first need to download the image features extracted after Stage 1 and place them here:
@@ -104,7 +105,6 @@ If you are proceeding to **Stage 2 training**, you first need to download the im
 To quickly test the code without processing raw data, you can directly download our preprocessed data and place it in this folder:
 > Download link for preprocessed data: `[Link to be added]`
 
-这个格式严格遵循了 README 文档的常见结构，并使用 Markdown 语法确保了在 GitHub 上的良好显示效果。您可以根据需要调整标题级别或补充下载链接。
 ## Prepare segmentation and detection datasets
 ### Processing Dataset Codes and Files Linking:
 
