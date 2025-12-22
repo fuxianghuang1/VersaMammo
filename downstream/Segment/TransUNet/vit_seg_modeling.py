@@ -272,7 +272,7 @@ class Encoder(nn.Module):
             self.backbone=load_image_encoder(ours)
 
         elif checkpoint_path!=None:
-            if 'lvmmed' in checkpoint_path:
+            if 'LVM-Med' in checkpoint_path:
                 from lvmmed_vit import ImageEncoderViT
                 prompt_embed_dim = 256
                 image_size = 1024
@@ -301,7 +301,7 @@ class Encoder(nn.Module):
                 check_point = torch.load(checkpoint_path)
                 self.backbone.load_state_dict(check_point,strict=False)
                 print('LVM-Med vit-b loaded')  
-            elif 'medsam' in checkpoint_path:
+            elif 'MedSAM' in checkpoint_path:
                 from medsam_vit import ImageEncoderViT
                 encoder_embed_dim=768
                 encoder_depth=12
@@ -332,7 +332,7 @@ class Encoder(nn.Module):
                     new_state_dict[new_key] = value
                 self.backbone.load_state_dict(new_state_dict, strict=False)
                 print('MedSAM vit-b loaded')  
-            elif 'mama' in checkpoint_path:
+            elif 'MAMA' in checkpoint_path:
                 from MaMA.load_weight import load_model
                 self.backbone=load_model(checkpoint_path)
                 print('mama vit-b loaded')
