@@ -20,29 +20,12 @@ class UNetEfficientNetB5(nn.Module):
                 self.encoder5 = nn.Sequential(*self.backbone.image_encoder._blocks[20:27])
                 self.encoder6 = nn.Sequential(*self.backbone.image_encoder._blocks[27:36])
                 self.encoder7 = nn.Sequential(*self.backbone.image_encoder._blocks[36:])
-            elif 'ENB5_SL' in checkpoint_path:
+            elif 'VersaMammo' in checkpoint_path:
                 ckpt = torch.load(checkpoint_path, map_location="cpu")
                 self.backbone=EfficientNet.from_pretrained("efficientnet-b5", num_classes=1)
                 image_encoder_weights = {}
                 for k in ckpt.keys():
                     if k.startswith("module.image_encoder."):
-                        image_encoder_weights[".".join(k.split(".")[2:])] = ckpt[k]
-                self.backbone.load_state_dict(image_encoder_weights, strict=False)
-            
-                self.encoder0 = nn.Sequential(self.backbone._conv_stem, self.backbone._bn0, self.backbone._swish)
-                self.encoder1 = nn.Sequential(*self.backbone._blocks[:3])
-                self.encoder2 = nn.Sequential(*self.backbone._blocks[3:8])
-                self.encoder3 = nn.Sequential(*self.backbone._blocks[8:13])
-                self.encoder4 = nn.Sequential(*self.backbone._blocks[13:20])
-                self.encoder5 = nn.Sequential(*self.backbone._blocks[20:27])
-                self.encoder6 = nn.Sequential(*self.backbone._blocks[27:36])
-                self.encoder7 = nn.Sequential(*self.backbone._blocks[36:])
-            elif 'model_epoch' in checkpoint_path:
-                ckpt = torch.load(checkpoint_path, map_location="cpu")
-                self.backbone=EfficientNet.from_pretrained("efficientnet-b5", num_classes=1)
-                image_encoder_weights = {}
-                for k in ckpt.keys():
-                    if k.startswith("module.local_image_encoder."):
                         image_encoder_weights[".".join(k.split(".")[2:])] = ckpt[k]
                 self.backbone.load_state_dict(image_encoder_weights, strict=False)
             
