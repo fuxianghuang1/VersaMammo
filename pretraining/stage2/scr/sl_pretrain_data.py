@@ -111,12 +111,14 @@ class Stage2PretrainDataset(Dataset):
                 image = Image.open(image_path).convert('RGB')  
 
                 if self.mode == 'train':
-                    img = self.transform2(image)
+                    img = self.transform1(image)
+                    img_low_res = self.transform2(image)
                     return {
                         'img': img,
+                        'img_low_res': img,
                         'birads_label': self.birads_labels[index],
                         'density_label': self.density_labels[index],
-                        'global_feature': self.features[index]
+                        'teacher_feature': self.features[index]
                     }
                 else:
                     img = self.transform1(image)

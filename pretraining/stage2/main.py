@@ -37,21 +37,20 @@ class VersaMammo(nn.Module):
 def create_dataloader(df, mode='train', transform1=None, transform2=None, data_dir='/your/new/path/', batch_size=32):
     dataset = Stage2PretrainDataset(df, mode=mode, transform1=transform1, transform2=transform2, data_dir=data_dir)
 
-    # 设置较小的num_workers和prefetch_factor
     dataloader = DataLoader(
         dataset,
         batch_size=batch_size,
         shuffle=(mode == 'train'),
-        num_workers=1,  # 降低CPU占用
-        pin_memory=True,  # 使用pin_memory提高GPU加载效率
-        prefetch_factor=batch_size,  # 控制预加载的样本数量
+        num_workers=1,  
+        pin_memory=True, 
+        prefetch_factor=batch_size,  
         drop_last=True
     )
     return dataloader 
 
 
 
-def train_loop(model, dataloader, criterion_birads, criterion_density, optimizer, device, start_time, epoch, num_epochs):
+def train_loop(args, model, dataloader, criterion_birads, criterion_density, optimizer, device, start_time, epoch):
     model.train()
     running_loss = 0.0
     running_contrastive_loss = 0.0
@@ -62,40 +61,38 @@ def train_loop(model, dataloader, criterion_birads, criterion_density, optimizer
 
     for batch_index, batch in enumerate(dataloader):
         img = batch['img'].to(device)
-        global_features = batch['global_feature'].to(device)
+        img_low_res = batch['img_low_res'].to(device)
+        teacher_features = batch['teacher_feature'].to(device)
         birads_labels = batch['birads_label'].to(device).long()
         density_labels = batch['density_label'].to(device).long()
 
         birads_out, density_out, features = model(img)
-        contrastive_loss_value = contrastive_loss(global_features, features, birads_labels, density_labels)   
-        kl_loss_value = kl_loss(global_features, features) 
+        birads_out, density_out, features_low_res = model(img_low_res)
+        contrastive_loss_value = contrastive_loss(features_low_res, features)   
+        kl_loss_value = kl_loss(teacher_features, features) 
         birads_ce_loss_value = criterion_birads(birads_out, birads_labels) 
         density_ce_loss_value = criterion_density(density_out, density_labels) 
 
-        total_loss = contrastive_loss_value + kl_loss_value +  (birads_ce_loss_value + density_ce_loss_value) 
+        total_loss = contrastive_loss_value + args.lambda1 * kl_loss_value +  args.lambda2 * (birads_ce_loss_value + density_ce_loss_value) 
 
         model.zero_grad()
         total_loss.backward()
         optimizer.step()
 
-        # 累加各个损失
         running_loss += total_loss.item()
         running_contrastive_loss += contrastive_loss_value.item()
         running_kl_loss += kl_loss_value.item()
         running_birads_ce_loss += birads_ce_loss_value.item()
         running_density_ce_loss += density_ce_loss_value.item()
 
-        # 计算平均损失
         avg_loss = running_loss / (batch_index + 1)
         avg_contrastive_loss = running_contrastive_loss / (batch_index + 1)
         avg_kl_loss = running_kl_loss / (batch_index + 1)
         avg_birads_ce_loss = running_birads_ce_loss / (batch_index + 1)
         avg_density_ce_loss = running_density_ce_loss / (batch_index + 1)
 
-
-        # # 计算并打印预计剩余时间
         elapsed_time = time.time() - start_time
-        total_elapsed_time = elapsed_time + (num_epochs - epoch) * (total_batches * (elapsed_time / (batch_index + 1)))
+        total_elapsed_time = elapsed_time + (args.num_epochs - epoch) * (total_batches * (elapsed_time / (batch_index + 1)))
         remaining_time = total_elapsed_time / (epoch - 1 + (batch_index + 1) / total_batches) - elapsed_time
 
         # time
@@ -105,8 +102,7 @@ def train_loop(model, dataloader, criterion_birads, criterion_density, optimizer
 
         remaining_time_str = f"{days} days, {hours} hours, {minutes} minutes"
 
-        # 打印每次迭代的损失
-        print(f'Epoch [{epoch}/{num_epochs}], Batch [{batch_index + 1}/{total_batches}], '
+        print(f'Epoch [{epoch}/{args.num_epochs}], Batch [{batch_index + 1}/{total_batches}], '
               f'Avg loss: {avg_loss:.4f}, '
               f'Avg birads ce loss: {avg_birads_ce_loss:.4f}, '
               f'Avg density ce loss: {avg_density_ce_loss:.4f}, '
@@ -120,7 +116,6 @@ def train_loop(model, dataloader, criterion_birads, criterion_density, optimizer
             model_path = os.path.join(args.output_dir, f'model_epoch_{epoch}_batch_{batch_index + 1}.pth')
             torch.save(model.state_dict(), model_path)
             print(f'Model saved at epoch {epoch}, batch {batch_index + 1}')
-
 
 
 def evaluate_model(y_true, y_pred, y_prob, n_bootstraps=1000, random_state=None):
@@ -276,8 +271,22 @@ def mammo_ckpt_wrapper(ckpt):
     return new_state_dict
 
 def main(args):
-    args.birads_n_class = 7
-    args.density_n_class = 4
+    if args.only_run_on_vindr == 'yes':      
+        df = pd.read_pickle('files/vindr_breast_20k_w_teacher_features.pkl') # Please replace with the actual path
+         
+        print('DataFrame size:', df.shape)
+        df['birads'] = df['birads'].astype(int) - 1
+
+    else:
+        df = pd.read_pickle('files/teacher_features.pkl') # Please replace with the actual path
+        df = df[df['birads'].notna()]          
+        df = df[df['birads'] < 6]
+        df = df[df['density'].notna()]
+        df['birads'] = df['birads'].astype(int)  
+    df['density'] = df['density'].astype(int)
+
+    args.birads_n_class = df['birads'].nunique()
+    args.density_n_class = df['density'].nunique()
     feature_extractor = BreastFeatureExtract(args)
     model = VersaMammo(feature_extractor,args)
     
@@ -296,10 +305,11 @@ def main(args):
 
     model.to(device)
 
-    resize_size = list(args.resize_size)
+    resize_size_h = list(args.resize_size_h)
+    resize_size_l = list(args.resize_size_l)
 
     transform1 = transforms.Compose([
-        transforms.Resize(resize_size),  
+        transforms.Resize(resize_size_h),  
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.3089, 0.3089, 0.3089], std=[0.2505, 0.2505, 0.2505]) 
     ])
@@ -307,25 +317,21 @@ def main(args):
         transforms.RandomHorizontalFlip(p=0.5),
         transforms.RandomRotation(degrees=15),
         transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
-        transforms.RandomResizedCrop(size=resize_size, scale=(0.8, 1.0)),
+        transforms.RandomResizedCrop(size=resize_size_l, scale=(0.8, 1.0)),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.3089, 0.3089, 0.3089], std=[0.2505, 0.2505, 0.2505]) 
     ])
 
-    df = pd.read_pickle('files/vindr_breast_20k_w_teacher_features.pkl')  
-    
     if args.test_only == 'yes':
         print("Testing mode activated.")
         # Load pre-trained parameters
         test_dataset = Stage2PretrainDataset(df, mode='test', transform1=transform1)
         print(f'Total testing samples: {len(test_dataset)}')
 
-        # 使用create_dataloader创建DataLoader
         dataloader = create_dataloader(df, mode='test', transform1=transform1, data_dir=args.data_dir, batch_size=args.batch_size)
 
-        # 获取所有保存的模型文件
         model_files = [f for f in os.listdir(args.output_dir) if f.endswith('.pth')]
-        model_files.sort()  # 按名称排序，以确保按顺序加载
+        model_files.sort() 
 
         for model_file in model_files:
             model_path = os.path.join(args.output_dir, model_file)
@@ -337,14 +343,12 @@ def main(args):
             msg = model.load_state_dict(checkpoint, strict=False)
             print(msg)
 
-            # 进行测试
             print(f'Testing model: {model_file}')
             test_classifier(model, dataloader, device)
     else:
         train_dataset = Stage2PretrainDataset(df, mode='train', transform1=transform1, transform2=transform2)
         print(f'Total training samples: {len(train_dataset)}')
 
-        # 使用create_dataloader创建DataLoader
         dataloader = create_dataloader(df, mode='train', transform1=transform1, transform2=transform2, data_dir=args.data_dir, batch_size=args.batch_size)
 
 
@@ -354,8 +358,8 @@ def main(args):
 
         for epoch in range(1, args.num_epochs + 1):  
             print(f"Epoch {epoch}/{args.num_epochs}")
-            start_time = time.time()  # 开始时间
-            train_loop(model, dataloader, criterion_birads, criterion_density, optimizer, device, start_time, epoch, args.num_epochs)
+            start_time = time.time()  
+            train_loop(args, model, dataloader, criterion_birads, criterion_density, optimizer, device, start_time, epoch)
         print(f'Trainning {args.num_epochs} epoches: Models are saved in  {args.output_dir}')
 
 
@@ -364,16 +368,21 @@ def config():
     parser.add_argument("--image_encoder_name", type=str, default='enb5_in',                       
         choices=['enb5_in', 'enb5_rand'], 
         help="Select an image encoder.")
-    parser.add_argument("--output_dir", type=str, default='versamammo_stage2_ckpt',)
-    parser.add_argument("--data_dir", type=str, default='files')
-    parser.add_argument("--batch_size", type=int, default=52)
-    parser.add_argument("--num_epochs", type=int, default=10, help="Number of training epochs")
+    parser.add_argument("--output_dir", type=str, default='/mnt/data/hfx/versamammo')
+    parser.add_argument("--data_dir", type=str, default='/mnt/data/hfx')
+    parser.add_argument("--batch_size", type=int, default=28)
+    parser.add_argument("--num_epochs", type=int, default=30, help="Number of training epochs")
     parser.add_argument("--learning_rate", type=float, default=1e-4, help="Learning rate for optimizer")
-    parser.add_argument("--resize_size", type=int, nargs=2, default=(512, 512),  
+    parser.add_argument("--lambda1", type=float, default=1.0, help="Weight for KL loss")
+    parser.add_argument("--lambda2", type=float, default=10, help="Weight for classification losses")      
+    parser.add_argument("--resize_size_h", type=int, nargs=2, default=(512, 512),  
                         help="The size to which images should be resized. Format: width height") 
+    parser.add_argument("--resize_size_l", type=int, nargs=2, default=(224, 224),  
+                        help="The size to which images should be resized. Format: width height")
     parser.add_argument("--gpu_ids", type=str, default='0,1,2,3', help="Comma-separated list of GPU IDs to use (default: '1,2')")
     parser.add_argument("--num_gpus", type=int, default=4, help="Number of GPUs to use (default: 2)")
     parser.add_argument("--test_only", type=str, default='no', help="If set yes, only run testing.")
+    parser.add_argument("--only_run_on_vindr", type=str, default='no', help="If set yes, only run on VINDR dataset.")
     return parser.parse_args()
 
 if __name__ == "__main__":
