@@ -287,7 +287,7 @@ if __name__ == "__main__":
     hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/Mammo-CLIP (Enb2)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
     hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/Mammo-CLIP (Enb2)"
     hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/Mammo-CLIP (Enb2).pth"
-    hypar["model"]=get_model(backbone_name="efficientnet-b2", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mammo-clip/b2-model-best-epoch-10.tar',pretrained=True,input_size=hypar["input_size"][0])
+    hypar["model"]=get_model(backbone_name="efficientnet-b2", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/Mammo-CLIP (Enb2).tar',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
     
     # # # # # # #efficientnetb5-mammo-clip
@@ -295,7 +295,7 @@ if __name__ == "__main__":
     hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/Mammo-CLIP (Enb5)"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
     hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/Mammo-CLIP (Enb5)"
     hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/Mammo-CLIP (Enb5).pth"
-    hypar["model"]=get_model(backbone_name="efficientnet-b5", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/mammo-clip/b5-model-best-epoch-7.tar',pretrained=True,input_size=hypar["input_size"][0])
+    hypar["model"]=get_model(backbone_name="efficientnet-b5", checkpoint_path=f'{os.path.dirname(current_dir)}/Sotas/Mammo-CLIP (Enb5).tar',pretrained=True,input_size=hypar["input_size"][0])
     main(hypar=hypar)
     
     # # # # # #VersaMammo
