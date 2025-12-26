@@ -243,7 +243,7 @@ def get_model(backbone_name="resnet50",pretrained=True,checkpoint_path=None,ours
                 return [enc2,enc3,enc5,enc7]
         backbone = EfficientNetBackbone(backbone)
         
-        backbone.out_channels = [40,80,192,360]
+        backbone.out_channels = [48,88,208,352]
         in_channels_list=backbone.out_channels
         backbone=CNNBackboneWithFPN(backbone,in_channels_list,256)
     elif backbone_name == "efficientnet-b5":
