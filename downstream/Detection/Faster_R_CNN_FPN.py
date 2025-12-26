@@ -322,10 +322,10 @@ def get_model(backbone_name="resnet50",pretrained=True,checkpoint_path=None,ours
                 enc5 = self.encoder5(enc4)
                 enc6 = self.encoder6(enc5)
                 enc7 = self.encoder7(enc6)
-                return [enc3,enc4,enc6,enc7]
+                return [enc2,enc3,enc5,enc7]
         backbone = EfficientNetBackbone(backbone)
         
-        backbone.out_channels = [64,128,304,512]
+        backbone.out_channels = [40,64,176,512]
         in_channels_list=backbone.out_channels
         backbone=CNNBackboneWithFPN(backbone,in_channels_list,256)
     elif backbone_name == "vit-b":
