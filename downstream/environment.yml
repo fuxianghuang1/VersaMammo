@@ -1,0 +1,17 @@
+name: versamammo-downstream
+channels:
+- conda-forge
+- defaults
+dependencies:
+- python=3.9
+- pip:
+  - efficientnet_pytorch==0.7.1
+  - einops==0.8.1
+  - matplotlib==3.9.2
+  - numpy==1.26.4
+  - pydicom==2.4.4
+  - timm==1.0.15
+  - torch==2.5.1
+  - torcheval==0.0.7
+  - torchvision==0.20.1
+  - transformers==4.53.2
