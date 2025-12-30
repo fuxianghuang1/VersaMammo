@@ -1,4 +1,4 @@
-name: zjy
+name: VersaMammo-Downstream
 channels:
   - anaconda
   - conda-forge
