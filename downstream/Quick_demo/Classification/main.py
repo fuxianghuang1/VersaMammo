@@ -328,5 +328,5 @@ if __name__ == "__main__":
     
     # # #EfficientNet-ours
     hypar['model_name']="VersaMammo"
-    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{current_dir}/../../Sotas/VersaMammo/ENb5/ENB5_SL.pth',ours=None,finetune=hypar['finetune'])
+    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{current_dir}/../../Sotas/VersaMammo.pth',ours=None,finetune=hypar['finetune'])
     main(hypar=hypar)
