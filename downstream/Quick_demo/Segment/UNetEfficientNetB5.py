@@ -8,7 +8,7 @@ class UNetEfficientNetB5(nn.Module):
     def __init__(self, num_classes=1, pretrained=True,checkpoint_path=None):
         super(UNetEfficientNetB5, self).__init__()
         if checkpoint_path:
-            if 'ENB5_SL' in checkpoint_path:
+            if 'VersaMammo' in checkpoint_path:
                 ckpt = torch.load(checkpoint_path, map_location="cpu")
                 self.backbone=EfficientNet.from_pretrained("efficientnet-b5", num_classes=1)
                 image_encoder_weights = {}
