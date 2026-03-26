@@ -239,7 +239,7 @@ if __name__ == "__main__":
     hypar['finetune']='lp'#lp or ft
     hypar['input_path']=f'{current_dir}/../data/INbreast-classification'
     
-    hypar['gpu_id']=[0]
+    hypar['gpu_id']=[2]
     # hypar['base_path']=f'/home/jiayi/Baseline/classification/saved_model/{hypar["dataset"]}/{hypar["task"]}/{hypar["finetune"]}/'
     hypar["valid_out_dir"] = f"{current_dir}/results/{hypar['dataset']}/{hypar['task']}/{hypar['finetune']}"+'.txt'##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
     hypar["model_digit"] = "full" ## indicates "half" or "full" accuracy of float number
@@ -284,5 +284,5 @@ if __name__ == "__main__":
     
     # # #EfficientNet-ours
     hypar["restore_model"]=hypar['model_path']+"VersaMammo"+".pth"
-    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{current_dir}/../../Sotas/VersaMammo/ENb5/ENB5_SL.pth',ours=None,finetune=hypar['finetune'])
+    hypar["model"]=MultiTaskModel('efficientnet', hypar['label_mappings'],checkpoint_path=f'{current_dir}/../../Sotas/VersaMammo.pth',ours=None,finetune=hypar['finetune'])
     main(hypar=hypar)
