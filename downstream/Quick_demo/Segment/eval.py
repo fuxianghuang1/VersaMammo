@@ -209,6 +209,6 @@ if __name__ == "__main__":
     hypar["plot_output"]=False
     hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Segment/results/{hypar['dataset']}/VersaMammo"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
     hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Segment/saved_model/{hypar['dataset']}/VersaMammo.pth"
-    hypar["model"]=UNetEfficientNetB5(checkpoint_path=f'{current_dir}/../../Sotas/VersaMammo.pth',pretrained=True)
+    hypar["model"]=UNetEfficientNetB5(checkpoint_path=f'{current_dir}/../../Sotas/VersaMammo (Enb5).pth',pretrained=True)
     main(hypar=hypar)
     
