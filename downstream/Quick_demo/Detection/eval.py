@@ -273,6 +273,6 @@ if __name__ == "__main__":
     hypar["valid_out_dir"] = f"{os.path.dirname(current_dir)}/Detection/results/{hypar['dataset']}/VersaMammo"##"../DIS5K-Results-test" ## output inferenced segmentation maps into this fold
     hypar["valid_out_bbox_dir"] = f"{os.path.dirname(current_dir)}/Detection/bbox_results/{hypar['dataset']}/VersaMammo"
     hypar["restore_model"] = f"{os.path.dirname(current_dir)}/Detection/saved_model/{hypar['dataset']}/VersaMammo.pth"
-    hypar["model"]=get_model(backbone_name="VersaMammo", checkpoint_path=f'{current_dir}/../../Sotas/VersaMammo/ENb5/ENB5_SL.pth',pretrained=True)
+    hypar["model"]=get_model(backbone_name="VersaMammo", checkpoint_path=f'{current_dir}/../../Sotas/VersaMammo.pth',pretrained=True)
     main(hypar=hypar)
     
