@@ -256,6 +256,15 @@ Please follow the steps:
    python VQA/eval.py
    ```
 
+# Acknowledgements
+
+We thank the authors of the following open-source projects for their valuable contributions:
+
+- **MedSAM**: [https://github.com/bowang-lab/MedSAM](https://github.com/bowang-lab/MedSAM)
+- **LVM-Med**: [https://github.com/uhlerlab/lvm-med](https://github.com/duyhominhnguyen/LVM-Med)
+- **Mammo-CLIP**: [https://github.com/mammo-clip/mammo-clip](https://github.com/batmanlab/Mammo-CLIP)
+- **MAMA**: [https://github.com/mama-project/mama](https://github.com/XYPB/MaMA)
 
 
+[NOTE] **If you have any questions, please don't hesitate to contact [Fuxiang Huang](mailto:fxhuang1995@gmail.com).** 
 
