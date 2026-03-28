@@ -14,7 +14,7 @@ logger = logging.getLogger("mammo")
 
 def get_args_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--image_encoder_name", type=str, default='sigclip400m',                       
+    parser.add_argument("--image_encoder_name", type=str, default='versamammo',                       
         choices=['mammoclip_b2','mammoclip_b5',
                  'medsam_vitb', 'lvmmed_vitb','lvmmed_r50','mama', 'versamammo'], 
         help="Select an image encoder.")
@@ -65,8 +65,7 @@ def main(args):
         for data in tqdm(loader, desc="Extracting features"):
             try:
                 images = data['image'].to(device)
-                image_paths = data['image_path']  # 确保这是一个列表，或者根据需要进行转换
-
+                image_paths = data['image_path'] 
                 # Extract features
                 features = model(images)
 
@@ -75,7 +74,7 @@ def main(args):
                     all_features_and_paths.append({'feature': feature_np, 'image_path': image_paths[i]})
             except Exception as e:
                 print(f"Error processing batch: {e}")
-                continue  # 或者你可以根据需要选择重新抛出异常或进行其他处理
+                continue 
 
     all_features_and_paths = pd.DataFrame(all_features_and_paths)
     save_dir = os.path.join(args.output_dir, args.dataset, args.image_encoder_name)
