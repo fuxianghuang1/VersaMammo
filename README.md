@@ -92,12 +92,13 @@ python pretrain_data.py
 ```
 > **Important:** Before running the script, **please update the file paths** inside `pretrain_data.py` to match your actual data storage locations.
 
-#### **Configure Data Index**
+#### **Stage 1**
 The `pretrain_data.csv` file contains the metadata for a part of pretraining data.  
 **You must replace the placeholder path `../dataset` in this file with your actual pretraining data path.**
 
 #### **Stage 1**
-
+If you are proceeding to **Stage 1 training**, you first need to have a `pretrain_data.csv` file as follows:
+- [Download File](https://drive.google.com/file/d/1LmEYk6k9x7xhazo2jWIWV6eRSrzLmLgy/view?usp=drive_link)
 #### **Stage 2**
 If you are proceeding to **Stage 2 training**, you first need to download the image features extracted after Stage 1 and place them here:
 - [Download Features (Selected Data)](https://drive.google.com/file/d/1Diu1aS5Y5xIol8llEdnSe-6415hiQuaD/view?usp=drive_link)
