@@ -51,14 +51,3 @@ print(f"Total number of rows in query_df: {query_df.shape[0]}")
 # 保存为.pkl文件
 database_df.to_pickle('/home/fuxianghuang/code/downstream_tasks/csv_files/features4retrieval/high/versamammo_database.pkl')
 query_df.to_pickle('/home/fuxianghuang/code/downstream_tasks/csv_files/features4retrieval/high/versamammo_query.pkl')
-
-'''
-birads
-1.0    335886
-2.0     82318
-0.0     68825
-3.0     25796
-4.0     11424
-5.0      1426
-6.0      1327
-'''
