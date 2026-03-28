@@ -9,8 +9,8 @@
   - [Download dataset link](#download-dataset-link)
   - [Prepare pretraining datasets](#prepare-pretraining-datasets)
   - [Prepare segmentation and detection datasets](#prepare-segmentation-and-detection-datasets)  
-  - [Prepare retrieval datasets](#prepare-retrieval-datasets)
   - [Prepare classification datasets](#prepare-classification-datasets)
+  - [Prepare retrieval datasets](#prepare-retrieval-datasets)
   - [Prepare VQA datasets](#prepare-vqa-datasets)
 
 - [Run](#run)
@@ -96,9 +96,9 @@ python pretrain_data.py
 The `pretrain_data.csv` file contains the metadata for a part of pretraining data.  
 **You must replace the placeholder path `../dataset` in this file with your actual pretraining data path.**
 
-#### **Stage 1**
-If you are proceeding to **Stage 1 training**, you first need to have a `pretrain_data.csv` file as follows:
+To quickly test the code without processing raw data, you can directly download our preprocessed data
 - [Download File](https://drive.google.com/file/d/1LmEYk6k9x7xhazo2jWIWV6eRSrzLmLgy/view?usp=drive_link)
+- 
 #### **Stage 2**
 If you are proceeding to **Stage 2 training**, you first need to download the image features extracted after Stage 1 and place them here:
 - [Download Features (Selected Data)](https://drive.google.com/file/d/1Diu1aS5Y5xIol8llEdnSe-6415hiQuaD/view?usp=drive_link)
@@ -117,7 +117,7 @@ To quickly test the code without processing raw data, you can directly download 
 | INbreast | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/INbreast.ipynb |
 | VinDr-Mammo | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/VinDr-Mammo.ipynb |
 
-## Prepare retrieval datasets
+
 
 ## Prepare classification datasets
 ### Processing Dataset Codes and Files Linking:
@@ -139,6 +139,8 @@ To quickly test the code without processing raw data, you can directly download 
 | NLBS | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/NLBS.ipynb |
 | VinDr-Mammo | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/VinDr-Mammo.ipynb |
 
+## Prepare retrieval datasets
+Directly use preprocessed classification datasets
 
 ## Prepare VQA datasets
 Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry/MammoVQA), and put the dataset's images under /datapre/VQA_data, dataset's json files under /downstream/VQA/.
@@ -183,7 +185,16 @@ VersaMammo
 
 # Run
 ## Pretraining 
-
+### Stage 1
+```shell
+cd pretraining/stage1
+bash bash.sh
+```
+### Stage 2
+```shell
+cd pretraining/stage2
+bash bash.sh
+```
 ## Downstream task
 If you want to train and test all models (including MedSAM, LVM-Med, Mammo-CLIP, MAMA, and our VersaMammo), please download the corresponding [pre-trained weights](https://drive.google.com/file/d/14E1eQxjrbU-U_7sHksiGZjUtoge4-I33/view?usp=sharing), and unzip it under /downstream/.
 
