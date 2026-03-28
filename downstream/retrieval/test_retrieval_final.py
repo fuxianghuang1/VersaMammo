@@ -50,7 +50,7 @@ def top_k_accuracy_with_ci(true_labels, predicted_labels, k, n_bootstrap=1000):
 def main(args):  
     #     encoders = ['medsam_vitb', 'lvmmed_vitb', 'lvmmed_r50','mammoclip_b2', 'mammoclip_b2', 'mama','versamammo']
     encoders = ['versamammo']
-    Ks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  
+    Ks = [1, 2, 3]  
     results = {encoder: [] for encoder in encoders}  
   
     for encoder in encoders:  
