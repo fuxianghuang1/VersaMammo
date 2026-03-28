@@ -95,7 +95,7 @@ python pretrain_data.py
 #### **Stage 1**
 The `pretrain_data.csv` file contains the metadata for a part of pretraining data.  
 **You must replace the placeholder path `../dataset` in this file with your actual pretraining data path.**
-- [Download csv File (Full Pretraining Dataset)](https://drive.google.com/file/d/1LmEYk6k9x7xhazo2jWIWV6eRSrzLmLgy/view?usp=drive_link)
+- [Download csv File](https://drive.google.com/file/d/1LmEYk6k9x7xhazo2jWIWV6eRSrzLmLgy/view?usp=drive_link)
   
 To quickly test the code without processing raw data, you can directly download our preprocessed data
 - [Download dataset (Selected Dataset)](https://drive.google.com/file/d/1jrnSlooIp4cti-Gnki-HDglidRqjJZuy/view?usp=drive_link)
