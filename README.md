@@ -98,7 +98,7 @@ The `pretrain_data.csv` file contains the metadata for a part of pretraining dat
 
 To quickly test the code without processing raw data, you can directly download our preprocessed data
 - [Download File](https://drive.google.com/file/d/1LmEYk6k9x7xhazo2jWIWV6eRSrzLmLgy/view?usp=drive_link)
-- 
+  
 #### **Stage 2**
 If you are proceeding to **Stage 2 training**, you first need to download the image features extracted after Stage 1 and place them here:
 - [Download Features (Selected Data)](https://drive.google.com/file/d/1Diu1aS5Y5xIol8llEdnSe-6415hiQuaD/view?usp=drive_link)
