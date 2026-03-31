@@ -82,7 +82,7 @@ Follow the steps below to prepare the pretraining data. The same data may also b
 
 #### **Raw data**
 Download the **EMBED**, **RSNA**, and **VinDr-Mammo** datasets (in DICOM format) and save all files to your target folder.
-> **Storage Note:** This step requires approximately **3 GB** of free disk space.
+> **Storage Note:** This step requires approximately **3 TB** of free disk space.
 
 #### **Preprocess the pretraining data**
 Run the preprocessing script to convert and organize the raw data:
