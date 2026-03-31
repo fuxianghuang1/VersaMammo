@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PYTHON_FILE="/classification/eval.py"
+PYTHON_FILE="./classification/eval.py"
 
 #
 sed -i "s/hypar\['dataset'\]='.*'/hypar['dataset']='CBIS-DDSM-breast'/" $PYTHON_FILE
