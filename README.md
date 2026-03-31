@@ -202,12 +202,14 @@ If you want to train and test all models (including MedSAM, LVM-Med, Mammo-CLIP,
 ### Training
 For all the downstream tasks, you can use the following command to train the models (please replace `downstream_task` with the name of the corresponding downstream task, e.g., `Segment`, `Detection`, `classification`, `VQA`, `Multi_Classification`):
 ```shell
+cd downstream
 bash /downstream/[downstream_task]/bash.sh
 ```
 
 ### Testing
 For all the downstream tasks, you can use the following command to test the models (please replace `downstream_task` with the name of the corresponding downstream task, e.g., `Segment`, `Detection`, `classification`, `VQA`, `Multi_Classification`):
 ```shell
+cd downstream
 bash /downstream/[downstream_task]/eval.sh
 ```
 
