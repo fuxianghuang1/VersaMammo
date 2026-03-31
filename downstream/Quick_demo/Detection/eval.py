@@ -262,7 +262,7 @@ if __name__ == "__main__":
     
     
     hypar["input_size"] = [512, 512] 
-    input_path = f'{current_dir}/../data/{hypar["dataset"]}/Test' 
+    input_path = f'{current_dir}/../demo_data/{hypar["dataset"]}/Test' 
     hypar['val_datapath'] = input_path+'_cache_'+str(hypar["input_size"][0])
     if not os.path.exists(hypar['val_datapath']):
         preprocess(input_path,hypar['val_datapath'],hypar["input_size"])
