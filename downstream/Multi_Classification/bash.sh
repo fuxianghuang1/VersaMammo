@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PYTHON_FILE="/Multi_Classification/main.py"
+PYTHON_FILE="./Multi_Classification/main.py"
 
 #
 sed -i "s/hypar\['dataset'\]='.*'/hypar['dataset']='VinDr-Mammo-finding'/" $PYTHON_FILE
