@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PYTHON_FILE="/Segment/eval.py"
+PYTHON_FILE="./Segment/eval.py"
 
 #
 sed -i "s/hypar\['dataset'\]='.*'/hypar['dataset']='CBIS-DDSM'/" $PYTHON_FILE
