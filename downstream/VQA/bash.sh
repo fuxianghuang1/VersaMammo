@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PYTHON_FILE="/VQA/main.py"
+PYTHON_FILE="./VQA/main.py"
 
 #
 sed -i "s/hypar\['question topic'\]='.*'/hypar['question topic']='View'/" $PYTHON_FILE
