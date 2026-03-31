@@ -276,7 +276,7 @@ if __name__ == "__main__":
     hypar['dataset']='INbreast'
     hypar['task']='Bi-Rads'
     hypar['finetune']='lp'#lp or ft
-    hypar['input_path']=f'{current_dir}/../data/INbreast-classification'
+    hypar['input_path']=f'{current_dir}/../demo_data/INbreast-classification'
     print(hypar['input_path'])
     hypar['gpu_id']=[0]
 
