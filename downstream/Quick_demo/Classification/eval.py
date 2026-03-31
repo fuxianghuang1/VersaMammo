@@ -237,7 +237,7 @@ if __name__ == "__main__":
     hypar['dataset']='INbreast'
     hypar['task']='Bi-Rads'
     hypar['finetune']='lp'#lp or ft
-    hypar['input_path']=f'{current_dir}/../data/INbreast-classification'
+    hypar['input_path']=f'{current_dir}/../demo_data/INbreast-classification'
     
     hypar['gpu_id']=[2]
     # hypar['base_path']=f'/home/jiayi/Baseline/classification/saved_model/{hypar["dataset"]}/{hypar["task"]}/{hypar["finetune"]}/'
