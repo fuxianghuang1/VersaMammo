@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PYTHON_FILE="/Detection/main.py"
+PYTHON_FILE="./Detection/main.py"
 
 #
 sed -i "s/hypar\['dataset'\]='.*'/hypar['dataset']='CBIS-DDSM'/" $PYTHON_FILE
