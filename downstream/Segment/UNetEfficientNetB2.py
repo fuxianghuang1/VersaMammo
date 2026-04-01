@@ -21,7 +21,7 @@ class UNetEfficientNetB2(nn.Module):
         self.encoder6 = nn.Sequential(*self.backbone._blocks[17:22])
         self.encoder7 = nn.Sequential(*self.backbone._blocks[22:])
         if checkpoint_path:
-            ckpt = torch.load(checkpoint_path, map_location="cpu")
+            ckpt = torch.load(checkpoint_path, map_location="cpu",weights_only=False)
             self.backbone=Mammo_clip(ckpt)
             self.encoder0 = nn.Sequential(self.backbone.image_encoder._conv_stem, self.backbone.image_encoder._bn0, self.backbone.image_encoder._swish)
             self.encoder1 = nn.Sequential(*self.backbone.image_encoder._blocks[:3])
