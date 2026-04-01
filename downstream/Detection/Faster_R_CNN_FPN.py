@@ -153,7 +153,7 @@ class ViTBackbone(torch.nn.Module):
     def forward(self, x):
         features = self.model(x)
         if self.checkpoint_path!=None:
-            if 'lvmmed' in self.checkpoint_path or 'medsam' in self.checkpoint_path:
+            if 'LVM-Med' in self.checkpoint_path or 'MedSAM' in self.checkpoint_path:
                 features = self.group_norm(features)
 
         return features
@@ -220,7 +220,7 @@ def get_model(backbone_name="resnet50",pretrained=True,checkpoint_path=None,ours
                 self.encoder6 = nn.Sequential(*self.backbone._blocks[17:22])
                 self.encoder7 = nn.Sequential(*self.backbone._blocks[22:])
                 if checkpoint_path:
-                    ckpt = torch.load(checkpoint_path, map_location="cpu")
+                    ckpt = torch.load(checkpoint_path, map_location="cpu",weights_only=False)
                     self.backbone=Mammo_clip(ckpt)
                     self.encoder0 = nn.Sequential(self.backbone.image_encoder._conv_stem, self.backbone.image_encoder._bn0, self.backbone.image_encoder._swish)
                     self.encoder1 = nn.Sequential(*self.backbone.image_encoder._blocks[:3])
@@ -241,7 +241,7 @@ def get_model(backbone_name="resnet50",pretrained=True,checkpoint_path=None,ours
                 enc6 = self.encoder6(enc5)
                 enc7 = self.encoder7(enc6)
                 return [enc2,enc3,enc5,enc7]
-        backbone = EfficientNetBackbone(backbone)
+        backbone = EfficientNetBackbone(backbone,checkpoint_path)
         
         backbone.out_channels = [48,88,208,352]
         in_channels_list=backbone.out_channels
@@ -264,7 +264,7 @@ def get_model(backbone_name="resnet50",pretrained=True,checkpoint_path=None,ours
                 self.encoder6 = nn.Sequential(*self.backbone._blocks[27:36])
                 self.encoder7 = nn.Sequential(*self.backbone._blocks[36:])
                 if checkpoint_path:
-                    ckpt = torch.load(checkpoint_path, map_location="cpu")
+                    ckpt = torch.load(checkpoint_path, map_location="cpu",weights_only=False)
                     self.backbone=Mammo_clip(ckpt)
                     self.encoder0 = nn.Sequential(self.backbone.image_encoder._conv_stem, self.backbone.image_encoder._bn0, self.backbone.image_encoder._swish)
                     self.encoder1 = nn.Sequential(*self.backbone.image_encoder._blocks[:3])
@@ -285,14 +285,14 @@ def get_model(backbone_name="resnet50",pretrained=True,checkpoint_path=None,ours
                 enc6 = self.encoder6(enc5)
                 enc7 = self.encoder7(enc6)
                 return [enc2,enc3,enc5,enc7]
-        backbone = EfficientNetBackbone(backbone)
+        backbone = EfficientNetBackbone(backbone,checkpoint_path)
         
         backbone.out_channels = [40,64,176,512]
         in_channels_list=backbone.out_channels
         backbone=CNNBackboneWithFPN(backbone,in_channels_list,256)
     elif backbone_name == "VersaMammo":
 
-        ckpt = torch.load(checkpoint_path, map_location="cpu")
+        ckpt = torch.load(checkpoint_path, map_location="cpu",weights_only=False)
         backbone=EfficientNet.from_pretrained("efficientnet-b5", num_classes=1)
         image_encoder_weights = {}
         for k in ckpt.keys():
