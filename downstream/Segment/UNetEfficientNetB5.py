@@ -9,8 +9,8 @@ class UNetEfficientNetB5(nn.Module):
     def __init__(self, num_classes=1, pretrained=True,checkpoint_path=None):
         super(UNetEfficientNetB5, self).__init__()
         if checkpoint_path:
-            if checkpoint_path.endswith('tar'):
-                ckpt = torch.load(checkpoint_path, map_location="cpu")
+            if 'Mammo-CLIP' in checkpoint_path:
+                ckpt = torch.load(checkpoint_path, map_location="cpu",weights_only=False)
                 self.backbone=Mammo_clip(ckpt)
                 self.encoder0 = nn.Sequential(self.backbone.image_encoder._conv_stem, self.backbone.image_encoder._bn0, self.backbone.image_encoder._swish)
                 self.encoder1 = nn.Sequential(*self.backbone.image_encoder._blocks[:3])
@@ -21,7 +21,7 @@ class UNetEfficientNetB5(nn.Module):
                 self.encoder6 = nn.Sequential(*self.backbone.image_encoder._blocks[27:36])
                 self.encoder7 = nn.Sequential(*self.backbone.image_encoder._blocks[36:])
             elif 'VersaMammo' in checkpoint_path:
-                ckpt = torch.load(checkpoint_path, map_location="cpu")
+                ckpt = torch.load(checkpoint_path, map_location="cpu",weights_only=False)
                 self.backbone=EfficientNet.from_pretrained("efficientnet-b5", num_classes=1)
                 image_encoder_weights = {}
                 for k in ckpt.keys():
