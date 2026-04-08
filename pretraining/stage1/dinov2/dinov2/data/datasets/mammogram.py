@@ -15,8 +15,8 @@ class MammogramDataset(Dataset):
         self.transform = transform  
         self.target_transform = target_transform  
         df = pd.read_csv(image_paths_file) 
-        # train_df = df[df['split'] == "training"].sample(n=1000)  
-        train_df = df[df['split'] == "training"]
+        # train_df = df[df['split'] == "train"].sample(n=1000)  
+        train_df = df[df['split'] == "train"]
 
         self.image_paths = train_df['path'].tolist()  
         self.birads_labels = train_df['birads'].tolist()  
