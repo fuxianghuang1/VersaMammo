@@ -141,7 +141,20 @@ To quickly test the code without processing raw data, you can directly download 
 | VinDr-Mammo | https://github.com/fuxianghuang1/VersaMammo/blob/main/datapre/preprocess/VinDr-Mammo.ipynb |
 
 ## Prepare retrieval datasets
-Directly use preprocessed classification datasets
+
+You can directly use the preprocessed classification datasets. You may either download the pre-extracted features for testing or perform testing on your own dataset.
+
+### Usage
+
+1. Extract features by running `extract_features.py`
+2. Merge multiple datasets by running `feature4retrieval_versamammo.py`
+3. Test the retrieval task by running `test_retrieval_final.py`
+
+To directly test the retrieval task, please download the pre-extracted features and extract them to the retrieval folder.  
+
+- [Download Features](https://drive.google.com/file/d/1y5PAYLnqPjEq-wnSGq55C3V-gNSa2nFi/view?usp=drive_link)
+
+> **Note:** Please adjust your data paths to ensure proper execution.
 
 ## Prepare VQA datasets
 Please prepare the dataset according to [MammoVQA](https://github.com/PiggyJerry/MammoVQA), and put the dataset's images under /datapre/VQA_data, dataset's json files under /downstream/VQA/.
