@@ -262,6 +262,12 @@ Please follow the steps:
    ```shell
    python Detection/eval.py
    ```
+   
+#### retrieval
+1. Evaluate the model:
+   ```shell
+   python retrieval/eval.py
+   ```
 
 #### VQA
 1. Evaluate the model:
