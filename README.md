@@ -98,7 +98,7 @@ The `pretrain_data.csv` file contains the metadata for a part of pretraining dat
 - [Download csv File (Selected Dataset)](https://drive.google.com/file/d/1Fml-9S8nm_83PtCRyh3o9J-pw-fZ_vw3/view?usp=drive_link)
   
 To quickly test the code without processing raw data, you can directly download our preprocessed data.
-- [Download dataset (Selected Dataset)](https://drive.google.com/file/d/1jrnSlooIp4cti-Gnki-HDglidRqjJZuy/view?usp=drive_link)
+- [Download Dataset (Selected Dataset)](https://drive.google.com/file/d/1jrnSlooIp4cti-Gnki-HDglidRqjJZuy/view?usp=drive_link)
   
 #### **Stage 2**
 If you are proceeding to **Stage 2 training**, you first need to download the image features extracted after Stage 1 and place them here:
@@ -149,7 +149,7 @@ You can directly use the preprocessed classification datasets. You may either do
 
 To directly test the retrieval task, please download the pre-extracted features and extract them to the retrieval folder.  
 
-- [Download Features](https://drive.google.com/file/d/1Qp5-eUNKPNOzYaKqhR4-abJ07Qf6vS8K/view?usp=drive_link)
+- [Download Features (Selected Dataset)](https://drive.google.com/file/d/1Qp5-eUNKPNOzYaKqhR4-abJ07Qf6vS8K/view?usp=drive_link)
 
 > **Note:** Please adjust your data paths to ensure proper execution.
 
