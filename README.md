@@ -226,7 +226,7 @@ bash /downstream/[downstream_task]/eval.sh
 ### Quick demo
 If you want to quickly test the VersaMammo, we have also included a quick demo to support training and testing.
 Please follow the steps:
-1. If you want to train and evaluate the models (except VQA), please follow here: If you have already downloaded the pre-trained weights of all models and have the /downstream/Sotas directory, you can skip Step 1. If not, please download the [pre-trained weights](https://drive.google.com/file/d/1HmEzoJDs99-t6_mUnrjnkcY8nTJ8WeVp/view?usp=sharing) of VersaMammo and place them under /downstream/Sotas/.
+1. If you want to train and evaluate the models (except VQA and retrieval), please follow here: If you have already downloaded the pre-trained weights of all models and have the /downstream/Sotas directory, you can skip Step 1. If not, please download the [pre-trained weights](https://drive.google.com/file/d/1HmEzoJDs99-t6_mUnrjnkcY8nTJ8WeVp/view?usp=sharing) of VersaMammo and place them under /downstream/Sotas/.
 2. Download the preprocessed [demo data](https://drive.google.com/file/d/1n6EhR-oerwA5maLKwKRgLD1RyVKKGSXY/view?usp=sharing) (Thanks for [INbreast dataset](https://www.sciencedirect.com/science/article/abs/pii/S107663321100451X)), and put it under /downstream/Quick_demo/.
 3. Download the [pre-trained weight](https://drive.google.com/file/d/1ryAhGluZls7Oq4ELHVj4hcq1TM8gHGO5/view?usp=sharing) for VQA test, and put it under /downstream/Quick_demo/VQA/. Remember to comment out the 94 line in ../envs/downstream/lib/python3.9/site-packages/transformers/models/vilt/modeling_vilt.py: `_, _, ph, pw = self.patch_embeddings.projection.weight.shape`
 4. ```shell
@@ -263,7 +263,7 @@ Please follow the steps:
    python Detection/eval.py
    ```
    
-#### retrieval
+#### Retrieval
 1. Evaluate the model:
    ```shell
    python retrieval/eval.py
