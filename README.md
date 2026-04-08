@@ -149,7 +149,7 @@ You can directly use the preprocessed classification datasets. You may either do
 
 To directly test the retrieval task, please download the pre-extracted features and extract them to the retrieval folder.  
 
-- [Download Features](https://drive.google.com/file/d/1y5PAYLnqPjEq-wnSGq55C3V-gNSa2nFi/view?usp=drive_link)
+- [Download Features](https://drive.google.com/file/d/1Qp5-eUNKPNOzYaKqhR4-abJ07Qf6vS8K/view?usp=drive_link)
 
 > **Note:** Please adjust your data paths to ensure proper execution.
 
@@ -228,8 +228,9 @@ If you want to quickly test the VersaMammo, we have also included a quick demo t
 Please follow the steps:
 1. If you want to train and evaluate the models (except VQA and retrieval), please follow here: If you have already downloaded the pre-trained weights of all models and have the /downstream/Sotas directory, you can skip Step 1. If not, please download the [pre-trained weights](https://drive.google.com/file/d/1HmEzoJDs99-t6_mUnrjnkcY8nTJ8WeVp/view?usp=sharing) of VersaMammo and place them under /downstream/Sotas/.
 2. Download the preprocessed [demo data](https://drive.google.com/file/d/1n6EhR-oerwA5maLKwKRgLD1RyVKKGSXY/view?usp=sharing) (Thanks for [INbreast dataset](https://www.sciencedirect.com/science/article/abs/pii/S107663321100451X)), and put it under /downstream/Quick_demo/.
-3. Download the [pre-trained weight](https://drive.google.com/file/d/1ryAhGluZls7Oq4ELHVj4hcq1TM8gHGO5/view?usp=sharing) for VQA test, and put it under /downstream/Quick_demo/VQA/. Remember to comment out the 94 line in ../envs/downstream/lib/python3.9/site-packages/transformers/models/vilt/modeling_vilt.py: `_, _, ph, pw = self.patch_embeddings.projection.weight.shape`
-4. ```shell
+3. To directly test the VQA task, please download the [pre-trained weight](https://drive.google.com/file/d/1ryAhGluZls7Oq4ELHVj4hcq1TM8gHGO5/view?usp=sharing), and put it under /downstream/Quick_demo/VQA/. Remember to comment out the 94 line in ../envs/downstream/lib/python3.9/site-packages/transformers/models/vilt/modeling_vilt.py: `_, _, ph, pw = self.patch_embeddings.projection.weight.shape`
+4. To directly test the retrieval task, please download the [pre-extracted features](https://drive.google.com/file/d/1Qp5-eUNKPNOzYaKqhR4-abJ07Qf6vS8K/view?usp=drive_link) and put it under /downstream/Quick_demo/retrieval/.  
+5. ```shell
    cd Quick_demo
    ```
 
