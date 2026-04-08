@@ -54,8 +54,8 @@ def main(args):
     results = {encoder: [] for encoder in encoders}  
   
     for encoder in encoders:  
-        databath_path = os.path.join('feature4retireval_versamammo', encoder+'_database.pkl')  
-        query_path = os.path.join('feature4retireval_versamammo', encoder+'_query.pkl')  
+        databath_path = os.path.join('feature4retrieval_versamammo', encoder+'_database.pkl')  
+        query_path = os.path.join('feature4retrieval_versamammo', encoder+'_query.pkl')  
 
         databath_features, databath_labels = load_features(databath_path)  
         query_features, query_labels = load_features(query_path)  
