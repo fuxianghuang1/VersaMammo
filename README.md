@@ -102,7 +102,7 @@ To quickly test the code without processing raw data, you can directly download 
   
 #### **Stage 2**
 If you are proceeding to **Stage 2 training**, you first need to download the image features extracted after Stage 1 and place them here:
-- [Download Features (Selected Dataset)](https://drive.google.com/file/d/1bN0_QDv9P7aPHoamdKy_GzwFB4DwiNtd/view?usp=sharing)
+- [Download Features (Selected Dataset)](https://drive.google.com/file/d/1bN0_QDv9P7aPHoamdKy_GzwFB4DwiNtd/view?usp=drive_link)
 
   
 
