@@ -105,9 +105,6 @@ If you are proceeding to **Stage 2 training**, you first need to download the im
 - [Download Features (Selected Dataset)](https://drive.google.com/file/d/1Diu1aS5Y5xIol8llEdnSe-6415hiQuaD/view?usp=drive_link)
 - [Download Features (Full Pretraining Dataset)](https://drive.google.com/file/d/1lfGztm0wi0NoMloD1FIZJpBzNjBMXxpg/view?usp=drive_link)
   
-#### **Quick Start (For Trial Runs)**
-To quickly test the code without processing raw data, you can directly download our preprocessed data and place it in this folder:
-> Download link for preprocessed data: `[Link to be added]`
 
 ## Prepare segmentation and detection datasets
 ### Processing Dataset Codes and Files Linking:
