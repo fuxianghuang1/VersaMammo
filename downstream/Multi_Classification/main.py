@@ -183,12 +183,20 @@ def valid(net, valid_dataloader, hypar, epoch=0):
             all_labels[task].append(labels_val_v[task].cpu().numpy())
             # Update class counts and correct counts
             for i in range(labels_val_v[task].size(0)):
-                indices = torch.nonzero(labels_val_v[task][i] == 1)[-1].cpu().tolist()
+
+                indices = torch.nonzero(labels_val_v[task][i] == 1).squeeze()
+                if indices.numel() == 0:
+                    continue
+
+                if indices.dim() == 0:
+                    indices = indices.unsqueeze(0)
+
+                indices = indices.cpu().tolist()
+
                 for key in indices:
-                    class_counts[task][key]+=1
-                
-                for key in indices:
-                    if preds[task][i][key]==labels_val_v[task][i][key]:
+                    class_counts[task][key] += 1
+
+                    if preds[task][i][key] == labels_val_v[task][i][key]:
                         correct_counts[task][key] += 1
     # Convert lists to numpy arrays
     for task in all_preds:
