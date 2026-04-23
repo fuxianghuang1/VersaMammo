@@ -14,7 +14,7 @@ class MultiTaskModel(nn.Module):
         super(MultiTaskModel, self).__init__()
         if checkpoint_path:
             if backbone_name=='vit_base_patch16_224':
-                if 'lvmmed' in checkpoint_path:
+                if 'LVM-Med' in checkpoint_path:
                     from lvmmed_vit import ImageEncoderViT
                     prompt_embed_dim = 256
                     image_size = 1024
@@ -44,7 +44,7 @@ class MultiTaskModel(nn.Module):
                     self.backbone.load_state_dict(check_point,strict=False)
                     print('LVM-Med vit-b loaded')  
                     self.backbone_features=768
-                elif 'medsam' in checkpoint_path:
+                elif 'MedSAM' in checkpoint_path:
                     from medsam_vit import ImageEncoderViT
                     encoder_embed_dim=768
                     encoder_depth=12
@@ -99,7 +99,7 @@ class MultiTaskModel(nn.Module):
                     self.backbone_features=2048
                 
             elif backbone_name=='resnet50':
-                if 'lvmmed' in checkpoint_path:
+                if 'LVM-Med' in checkpoint_path:
                     self.backbone = torchvision.models.resnet50(pretrained=True)
                     self.backbone.fc = nn.Identity()
                     pretrained_weight = torch.load(checkpoint_path)
