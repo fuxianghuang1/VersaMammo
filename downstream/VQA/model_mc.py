@@ -69,7 +69,7 @@ class MultiTaskModel(nn.Module):
             class_num={task:len(classes)}
         if checkpoint_path:
             if backbone_name=='vit_base_patch16_224':
-                if 'lvmmed' in checkpoint_path:
+                if 'LVM-Med' in checkpoint_path:
                     from lvmmed_vit import ImageEncoderViT
                     prompt_embed_dim = 256
                     image_size = 1024
@@ -99,7 +99,7 @@ class MultiTaskModel(nn.Module):
                     self.backbone.load_state_dict(check_point,strict=False)
                     print('LVM-Med vit-b loaded')  
                     self.backbone_features=768
-                elif 'medsam' in checkpoint_path:
+                elif 'MedSAM' in checkpoint_path:
                     from medsam_vit import ImageEncoderViT
                     encoder_embed_dim=768
                     encoder_depth=12
@@ -231,7 +231,7 @@ class MultiTaskModel(nn.Module):
                     self.backbone = EfficientNetBackbone(checkpoint_path)
                     self.backbone_features=256
             elif backbone_name=='resnet50':
-                if 'lvmmed' in checkpoint_path:
+                if 'LVM-Med' in checkpoint_path:
                     class ResNet50Features(nn.Module):
                         def __init__(self, pretrained=True, checkpoint_path=None):
                             super(ResNet50Features, self).__init__()
@@ -277,7 +277,7 @@ class MultiTaskModel(nn.Module):
                             return output
                     self.backbone = ResNet50Features(pretrained=True,checkpoint_path=checkpoint_path)
                     self.backbone_features = 256
-            elif 'mama' in checkpoint_path:
+            elif 'MAMA' in checkpoint_path:
                 from MaMA.load_weight import load_model
                 self.backbone=load_model(checkpoint_path)
                 print('mama vit-b loaded')
