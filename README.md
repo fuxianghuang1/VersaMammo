@@ -1,6 +1,6 @@
 
 ## Notices
-Due to certain data-related restrictions, the corresponding pre-trained weights are **not publicly available at this time**. We are currently exploring feasible options for its release.
+Due to the newly changed dataset [policy](https://github.com/Emory-HITI/EMBED_Open_Data/blob/main/EMBED_license.md), we can not share the pre-trained model any more. We are actively seeking permission for public release and will let you know once it is granted.
 
 ## Contents
 
