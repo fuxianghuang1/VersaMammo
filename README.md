@@ -1,6 +1,6 @@
 
 ## Notices
-Due to certain data-related restrictions, the model cannot be made publicly available at this time. We are currently exploring feasible options for its release.
+Due to certain data-related restrictions, the corresponding pre-trained weights are **not publicly available at this time**. We are currently exploring feasible options for its release.
 
 ## Contents
 
