@@ -212,8 +212,6 @@ bash bash.sh
 ## Downstream task
 If you want to train and test all models, please download the corresponding pre-trained weights (need request), and unzip it under /downstream/.
 
-Please note that the corresponding pre-trained weights are **not publicly available at this time** due to restrictions in the EMBED Data Use Agreement. We are actively working with the EMBED team to seek permission for public release. Once we obtain the necessary approval, we will update this repository.  
-﻿
 ### Training
 For all the downstream tasks, you can use the following command to train the models (please replace `downstream_task` with the name of the corresponding downstream task, e.g., `Segment`, `Detection`, `classification`, `VQA`, `Multi_Classification`):
 ```shell
