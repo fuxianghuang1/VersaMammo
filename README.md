@@ -1,7 +1,6 @@
 
 ## Notices
-Due to the newly changed dataset [policy](https://github.com/Emory-HITI/EMBED_Open_Data/blob/main/EMBED_license.md), we can not share the pre-trained model any more. We are actively seeking permission for public release and will let you know once it is granted.
-
+Due to the newly changed dataset [policy](https://github.com/Emory-HITI/EMBED_Open_Data/blob/main/EMBED_license.md), we can not share the pre-trained model any more. 
 ## Contents
 
 - [Installation](#Installation)
