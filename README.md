@@ -4,6 +4,7 @@
 [![Arxiv Page](https://img.shields.io/badge/Arxiv-2509.20271-red?style=flat-square)](https://arxiv.org/abs/2509.20271)
 ![GitHub last commit](https://img.shields.io/github/last-commit/fuxianghuang1/VersaMammo?style=flat-square)
 
+## 🆕 News 
 Our paper **VersaMammo** has been accepted by **[*Nature Biomedical Engineering*](https://www.nature.com/natbiomedeng/)**! 🎉 
 
 ## 📝 Abstract
@@ -15,11 +16,11 @@ Breast cancer is the most commonly diagnosed cancer and the leading cause of can
   <em>Figure 1: <b>Overview of VersaMammo.</b> (a) The VersaMammo dataset comprises a large-scale collection of 679,911 mammograms spanning 21 datasets, enabling comprehensive model training and evaluation. Data splits, data distribution, and usage details are provided in Supplementary Tables 35-49. (b) Average performance of FMs across a diverse set of experiments. If there are different backbones of the same FM, only the best model is presented here. (c) Overview of the two-stage hybrid pre-training strategy for VersaMammo. In the first stage, a teacher model is trained using self-supervised learning, involving Masked Image Modeling (MIM) loss and contrastive loss. The parameters are updated through Exponential Moving Average (EMA). The second stage utilizes a combination of losses, including knowledge distillation loss, dual-head supervised loss, and contrastive loss, integrating both teacher model knowledge and clinical supervision (guideline-grounded labels). (d) Downstream tasks used to evaluate the FMs.</em>
 </p>
 
-## Notices
+## ⚠️ Notices
 Due to the newly changed dataset [policy](https://github.com/Emory-HITI/EMBED_Open_Data/blob/main/EMBED_license.md), we can not share the pre-trained model any more. 
 
 
-## Contents
+## 📚 Contents
 
 - [Installation](#installation)
   - [Pretraining prerequisites](#pretraining-prerequisites)
@@ -41,7 +42,7 @@ Due to the newly changed dataset [policy](https://github.com/Emory-HITI/EMBED_Op
   
 - [Acknowledgements](#acknowledgements)
 
-# Installation
+# 🔧 Installation
 ## Pretraining prerequisites
 ```shell
 git clone https://github.com/fuxianghuang1/VersaMammo.git
@@ -72,7 +73,7 @@ python -m pip install -r requirements.txt
 conda env update -f environment.yml
 ```
 
-# Data Preparation
+# 📂 Data Preparation
 
 ## Download dataset link
 Datasets downloading URL:
@@ -216,7 +217,7 @@ VersaMammo
    ...
 ````
 
-# Run
+# 🚀 Run
 ## Pretraining 
 ### Stage 1
 ```shell
@@ -298,7 +299,7 @@ Please follow the steps:
    python VQA/eval.py
    ```
 
-# Cite
+# 📜 Cite
 If you find VersaMammo helpful for your work, please kindly cite our [paper](https://arxiv.org/abs/2509.20271) :
 
 ```bibtex
@@ -312,7 +313,7 @@ If you find VersaMammo helpful for your work, please kindly cite our [paper](htt
       url={https://arxiv.org/abs/2509.20271}, 
 }
 ```
-# Acknowledgements
+# 🙏 Acknowledgements
 
 We thank the authors of the following open-source projects for their valuable contributions:
 
