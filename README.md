@@ -1,9 +1,27 @@
+<!-- # VersaMammo
+## A Versatile Foundation Model for AI-enabled Mammogram Interpretation -->
+![header](https://capsule-render.vercel.app/api?type=waving&height=160&color=gradient&text=VersaMammo:&section=header&fontAlign=12&fontSize=28&textBg=false&descAlignY=45&fontAlignY=20&descSize=20&desc=A%20Versatile%20Foundation%20Model%20for%20AI-enabled%20Mammogram%20Interpretation&descAlign=52)
+[![Arxiv Page](https://img.shields.io/badge/Arxiv-2509.20271-red?style=flat-square)](https://arxiv.org/abs/2509.20271)
+![GitHub last commit](https://img.shields.io/github/last-commit/your-username/VersaMammo?style=flat-square)
+
+Our paper **VersaMammo** has been accepted by **[*Nature Biomedical Engineering*](https://www.nature.com/natbiomedeng/)**! 🎉 
+
+## 📝 Overview
+**Abstract:** Breast cancer is the most commonly diagnosed cancer and the leading cause of cancer-related mortality in women globally. Mammography is essential for the early detection and diagnosis of breast lesions. Despite recent progress in foundation models (FMs) for mammogram analysis, their clinical translation remains constrained by several fundamental limitations, including insufficient diversity in training data, limited model generalizability, and a lack of comprehensive evaluation across clinically relevant tasks. Here, we introduce VersaMammo, a versatile foundation model for mammograms, designed to overcome these limitations. To address the scarcity of large-scale, diverse mammography datasets, we curated a comprehensive collection of 679,911 mammograms from 21 datasets, one of the largest and most diverse mammography datasets to date. To further address the challenge of high-quality supervision, we developed a two-stage hybrid pretraining strategy that integrates self-supervised learning with supervised knowledge distillation and is enhanced by guideline-grounded labels. We systematically evaluated VersaMammo across 92 tasks spanning five clinically relevant categories, including detection, segmentation, classification, retrieval, and visual question answering. VersaMammo achieves superior performance, ranking first in 54 out of 68 internal tasks and 20 out of 24 external tasks, with average ranks of 1.5 and 1.2, respectively. Our work provides a robust and generalizable foundation model for mammography, capable of supporting a wide range of clinical applications.
+
+<p align="center">
+  <img src="assets/versamammo_framework.png" width="95%" alt="VersaMammo Framework">
+  <br>
+  <em>Figure 1: <b>Overview of VersaMammo.</b> (a) The VersaMammo dataset comprises a large-scale collection of 679,911 mammograms spanning 21 datasets, enabling comprehensive model training and evaluation. Data splits, data distribution, and usage details are provided in Supplementary Tables 35-49. (b) Average performance of FMs across a diverse set of experiments. If there are different backbones of the same FM, only the best model is presented here. (c) Overview of the two-stage hybrid pre-training strategy for VersaMammo. In the first stage, a teacher model is trained using self-supervised learning, involving Masked Image Modeling (MIM) loss and contrastive loss. The parameters are updated through Exponential Moving Average (EMA). The second stage utilizes a combination of losses, including knowledge distillation loss, dual-head supervised loss, and contrastive loss, integrating both teacher model knowledge and clinical supervision (guideline-grounded labels). (d) Downstream tasks used to evaluate the FMs.</em>
+</p>
 
 ## Notices
 Due to the newly changed dataset [policy](https://github.com/Emory-HITI/EMBED_Open_Data/blob/main/EMBED_license.md), we can not share the pre-trained model any more. 
+
+
 ## Contents
 
-- [Installation](#Installation)
+- [Installation](#installation)
   - [Pretraining prerequisites](#pretraining-prerequisites)
   - [Downstream task prerequisites](#downstream-task-prerequisites)
 
@@ -18,7 +36,9 @@ Due to the newly changed dataset [policy](https://github.com/Emory-HITI/EMBED_Op
 - [Run](#run)
   - [Pretraining](#pretraining)
   - [Downstream task](#downstream-task)
-
+    
+- [Cite](#cite)
+  
 - [Acknowledgements](#acknowledgements)
 
 # Installation
@@ -278,6 +298,20 @@ Please follow the steps:
    python VQA/eval.py
    ```
 
+# Cite
+If you find VersaMammo helpful for your work, please kindly cite our [paper](https://arxiv.org/abs/2509.20271) :
+
+```bibtex
+@misc{huang2026versamammo,
+      title={A Versatile Foundation Model for AI-enabled Mammogram Interpretation}, 
+      author={Fuxiang Huang and Jiayi Zhu and Yunfang Yu and Yu Xie and Yuan Guo and Qingcong Kong and Mingxiang Wu and Xinrui Jiang and Shu Yang and Jiabo Ma and Ziyi Liu and Zhe Xu and Zhixuan Chen and Yujie Tan and Zifan He and Luhui Mao and Xi Wang and Junlin Hou and Lei Zhang and Qiong Luo and Zhenhui Li and Herui Yao and Hao Chen},
+      year={2026},
+      eprint={2509.20271},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2509.20271}, 
+}
+```
 # Acknowledgements
 
 We thank the authors of the following open-source projects for their valuable contributions:
